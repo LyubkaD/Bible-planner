@@ -1,0 +1,33 @@
+{
+  "id": "/BiblePlanner",
+  "name": "Daily Faith & Planner - Дневен Планер",
+  "short_name": "FaithPlanner",
+  "description": "Интерактивен луксозен кожен планер с библейски стихове, график и лични намерения за всеки ден от годината.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F8CFBB",
+  "theme_color": "#F8CFBB",
+  "categories": ["lifestyle", "productivity"],
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
