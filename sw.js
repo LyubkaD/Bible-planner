@@ -1,10 +1,16 @@
-const CACHE_NAME = 'faith-planner-v2';
-const ASSETS = ['./', './index.html', './manifest.json'];
+const CACHE_NAME = 'faith-planner-v3';
+const ASSETS = [
+  './',
+  './index.html',
+  './manifest.json',
+  './icon-192.png',
+  './icon-512.png'
+];
 
 self.addEventListener('install', (event) => {
   self.skipWaiting();
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS))
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS).catch(() => {}))
   );
 });
 
@@ -20,13 +26,13 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   event.respondWith(
     fetch(event.request)
-      .then((networkResponse) => {
-        if (networkResponse && networkResponse.status === 200) {
-          const resClone = networkResponse.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, resClone));
+      .then((response) => {
+        if (response && response.status === 200) {
+          const clone = response.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
         }
-        return networkResponse;
+        return response;
       })
-      .catch(() => caches.match(event.request))
+      .catch(() => caches.match(event.request).then((res) => res || caches.match('./index.html')))
   );
 });
