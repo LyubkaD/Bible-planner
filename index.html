@@ -83,6 +83,7 @@
       outline: none;
       cursor: pointer;
       appearance: none;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
 
     .lang-select-wrap::after {
@@ -749,7 +750,7 @@
       border-color: var(--terracotta);
     }
 
-    /* MODALS & PARCHMENT POPUP */
+    /* Modals & Parchment Popup */
     .planner-modal-backdrop {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -762,7 +763,6 @@
       padding: 16px;
     }
 
-    /* The Unrolling Parchment Scroll */
     .parchment-scroll-card {
       width: 100%;
       max-width: 360px;
@@ -1150,7 +1150,6 @@
 <div class="planner-modal-backdrop" id="parchmentAlertModal">
   <div class="parchment-scroll-card">
     <div class="parchment-fish-symbol">
-      <!-- Stylized Christian Fish (Ichthys) with Cross Eye -->
       <svg viewBox="0 0 100 50">
         <path d="M 5,25 C 25,5 75,5 95,25 C 75,45 25,45 5,25 Z M 80,15 L 98,5 L 98,45 L 80,35" />
         <circle cx="28" cy="25" r="3" fill="#B95835" />
@@ -1214,15 +1213,12 @@
 
   const ALL_LANGUAGES = {
     bg: { name: "Български", flag: "🇧🇬", locale: "bg-BG" },
-    fr: { name: "Français", flag: "🇫🇷", locale: "fr-FR" },
-    en: { name: "English", flag: "🇬🇧", locale: "en-US" },
     de: { name: "Deutsch", flag: "🇩🇪", locale: "de-DE" },
+    en: { name: "English", flag: "🇬🇧", locale: "en-US" },
+    fr: { name: "Français", flag: "🇫🇷", locale: "fr-FR" },
     it: { name: "Italiano", flag: "🇮🇹", locale: "it-IT" },
     es: { name: "Español", flag: "🇪🇸", locale: "es-ES" },
-    ru: { name: "Русский", flag: "🇷🇺", locale: "ru-RU" },
-    pt: { name: "Português", flag: "🇵🇹", locale: "pt-PT" },
-    ro: { name: "Română", flag: "🇷🇴", locale: "ro-RO" },
-    el: { name: "Ελληνικά", flag: "🇬🇷", locale: "el-GR" }
+    ru: { name: "Русский", flag: "🇷🇺", locale: "ru-RU" }
   };
 
   /* ДИНАМИЧНИ ПУЛОВЕ СЪС СТИХОВЕ ЗА ВСЕКИ ДЕН */
@@ -1230,27 +1226,27 @@
     morning: [
       {
         bg: { ref: "Псалм 142:8", text: "„Дай ми да чуя рано Твоята милост, защото на Тебе се уповавам; покажи ми пътя, по който да ходя, понеже към Тебе възнасям душата си.“" },
-        fr: { ref: "Psaume 143:8", text: "« Fais-moi dès le matin entendre ta bonté ! Car je me confie en toi. Fais-moi connaître le chemin où je dois marcher ! »" },
+        de: { ref: "Psalm 143:8", text: "„Lass mich frühe hören deine Gnade; denn ich hoffe auf dich. Tue mir kund den Weg, darauf ich gehen soll; denn mich verlangt nach dir.“" },
         en: { ref: "Psalm 143:8", text: "“Cause me to hear Your lovingkindness in the morning, for in You do I trust; cause me to know the way wherein I should walk.”" },
-        de: { ref: "Psalm 143:8", text: "„Lass mich frühe hören deine Gnade; denn ich hoffe auf dich. Tue mir kund den Weg, darauf ich gehen soll.“" },
+        fr: { ref: "Psaume 143:8", text: "« Fais-moi dès le matin entendre ta bonté ! Car je me confie en toi. Fais-moi connaître le chemin où je dois marcher ! »" },
         it: { ref: "Salmo 143:8", text: "«Fammi udire la tua benignità la mattina, poiché in te confido; fammi conoscere la via per la quale devo camminare.»" },
         es: { ref: "Salmos 143:8", text: "“Hazme oír por la mañana tu misericordia, porque en ti he confiado; hazme saber el camino por donde ande.”" },
         ru: { ref: "Псалом 142:8", text: "«Даруй мне рано услышать милость Твою, ибо я на Тебя уповаю. Укажи мне путь, по которому мне идти.»" }
       },
       {
         bg: { ref: "Плач Йеремиев 3:22-23", text: "„Милостите Господни не са се свършили; те се подновяват всяка сутрин; голяма е Твоята вярност!“" },
-        fr: { ref: "Lamentations 3:22-23", text: "« Les bontés de l'Éternel ne sont pas épuisées, elles se renouvellent chaque matin. Grande est ta fidélité ! »" },
+        de: { ref: "Klagelieder 3:22-23", text: "„Die Barmherzigkeit des Herrn hat noch kein Ende, sondern sie ist alle Morgen neu, und deine Treue ist groß.“" },
         en: { ref: "Lamentations 3:22-23", text: "“The steadfast love of the Lord never ceases; His mercies are new every morning; great is Your faithfulness.”" },
-        de: { ref: "Klagelieder 3:22-23", text: "„Die Güte des Herrn ist's, dass wir nicht gar aus sind; seine Barmherzigkeit hat noch kein Ende, sondern sie ist alle Morgen neu.“" },
-        it: { ref: "Lamentazioni 3:22-23", text: "«È una grazia del Signore che non siamo stati interamente distrutti; le sue compassioni si rinnovano ogni mattina.»" },
+        fr: { ref: "Lamentations 3:22-23", text: "« Les bontés de l'Éternel ne sont pas épuisées, elles se renouvellent chaque matin. Grande est ta fidélité ! »" },
+        it: { ref: "Lamentazioni 3:22-23", text: "«È una grazia del Signore che non siamo stati perduti; le sue compassioni si rinnovano ogni mattina.»" },
         es: { ref: "Lamentaciones 3:22-23", text: "“Por la misericordia del Señor no hemos sido consumidos; nuevas son cada mañana; grande es tu fidelidad.”" },
         ru: { ref: "Плач Иеремии 3:22-23", text: "«По милости Господа мы не исчезли, ибо милосердие Его не истощилось. Оно обновляется каждое утро!»" }
       },
       {
         bg: { ref: "Псалм 118:24", text: "„Този е денят, който Господ е сътворил; нека се радваме и се веселим в него!“" },
-        fr: { ref: "Psaume 118:24", text: "« C'est ici la journée que l'Éternel a faite: Qu'elle soit pour nous un sujet d'allégresse et de joie ! »" },
-        en: { ref: "Psalm 118:24", text: "“This is the day that the Lord has made; let us rejoice and be glad in it.”" },
         de: { ref: "Psalm 118:24", text: "„Dies ist der Tag, den der Herr gemacht hat; lasst uns freuen und fröhlich an ihm sein.“" },
+        en: { ref: "Psalm 118:24", text: "“This is the day that the Lord has made; let us rejoice and be glad in it.”" },
+        fr: { ref: "Psaume 118:24", text: "« C'est ici la journée que l'Éternel a faite: Qu'elle soit pour nous un sujet d'allégresse et de joie ! »" },
         it: { ref: "Salmo 118:24", text: "«Questo è il giorno che l'Eterno ha fatto; festeggiamo e rallegriamoci in esso!»" },
         es: { ref: "Salmos 118:24", text: "“Este es el día que hizo el Señor; nos gozaremos y alegraremos en él.”" },
         ru: { ref: "Псалом 117:24", text: "«Сей день сотворил Господь: возрадуемся и возвеселимся в оный!»" }
@@ -1259,18 +1255,18 @@
     midday: [
       {
         bg: { ref: "Исая 40:29", text: "„Той дава сила на уморения и умножава мощта на изнемощелия. Ония, които се надяват на Господа, ще подновят силата си.“" },
-        fr: { ref: "Ésaïe 40:29", text: "« Il donne de la force à celui qui est fatigué, et Il augmente la vigueur de celui qui tombe en défaillance. »" },
+        de: { ref: "Jesaja 40:29", text: "„Er gibt dem Müden Kraft und Stärke genug dem Unvermögenden. Die auf den Herrn harren, kriegen neue Kraft.“" },
         en: { ref: "Isaiah 40:29", text: "“He gives power to the faint; and to them that have no might He increases strength.”" },
-        de: { ref: "Jesaja 40:29", text: "„Er gibt dem Müden Kraft und Stärke genug dem Unvermögenden.“" },
+        fr: { ref: "Ésaïe 40:29", text: "« Il donne de la force à celui qui est fatigué, et Il augmente la vigueur de celui qui tombe en défaillance. »" },
         it: { ref: "Isaia 40:29", text: "«Egli dà forza allo stanco e accresce vigore a colui che è spossato.»" },
         es: { ref: "Isaías 40:29", text: "“Él da esfuerzo al cansado, y multiplica las fuerzas al que no tiene ningunas.”" },
         ru: { ref: "Исаия 40:29", text: "«Он дает утомленному силу, и изнемогшему дарует крепость.»" }
       },
       {
         bg: { ref: "Филипяни 4:13", text: "„Всичко мога чрез Исуса Христа, Който ме подкрепя и ми дава сила.“" },
-        fr: { ref: "Philippiens 4:13", text: "« Je puis tout par celui qui me fortifie, Christ. »" },
-        en: { ref: "Philippians 4:13", text: "“I can do all things through Christ who strengthens me.”" },
         de: { ref: "Philipper 4:13", text: "„Ich vermag alles durch den, der mich mächtig macht, Christus.“" },
+        en: { ref: "Philippians 4:13", text: "“I can do all things through Christ who strengthens me.”" },
+        fr: { ref: "Philippiens 4:13", text: "« Je puis tout par celui qui me fortifie, Christ. »" },
         it: { ref: "Filippesi 4:13", text: "«Io posso ogni cosa in Colui che mi fortifica.»" },
         es: { ref: "Filipenses 4:13", text: "“Todo lo puedo en Cristo que me fortalece.”" },
         ru: { ref: "Филиппийцам 4:13", text: "«Все могу в укрепляющем меня Иисусе Христе.»" }
@@ -1279,18 +1275,18 @@
     evening: [
       {
         bg: { ref: "Псалм 4:8", text: "„Спокойно лягам и заспивам, защото само Ти, Господи, ме правиш да живея в безопасност.“" },
-        fr: { ref: "Psaume 4:8", text: "« Je me couche et je m'endors en paix, car Toi seul, ô Éternel ! tu me fais habiter en sécurité. »" },
-        en: { ref: "Psalm 4:8", text: "“In peace I will lie down and sleep, for You alone, Lord, make me dwell in safety.”" },
         de: { ref: "Psalm 4:8", text: "„Ich liege und schlafe ganz mit Frieden; denn allein du, Herr, hilfst mir, dass ich sicher wohne.“" },
+        en: { ref: "Psalm 4:8", text: "“In peace I will lie down and sleep, for You alone, Lord, make me dwell in safety.”" },
+        fr: { ref: "Psaume 4:8", text: "« Je me couche et je m'endors en paix, car Toi seul, ô Éternel ! tu me fais habiter en sécurité. »" },
         it: { ref: "Salmo 4:8", text: "«In pace mi coricherò e in pace dormirò, perché tu solo, o Eterno, mi fai abitare al sicuro.»" },
         es: { ref: "Salmos 4:8", text: "“En paz me acostaré, y asimismo dormiré; porque solo tú, Señor, me haces vivir confiado.”" },
         ru: { ref: "Псалом 4:8", text: "«Спокойно ложусь я и сплю, ибо Ты, Господи, един даешь мне жить в безопасности.»" }
       },
       {
         bg: { ref: "Йоан 14:27", text: "„Мир ви оставям; Моя мир ви давам; Аз не ви давам тъй, както светът дава. Да се не смущава сърцето ви, нито да се бои.“" },
-        fr: { ref: "Jean 14:27", text: "« Je vous laisse la paix, je vous donne ma paix. Que votre cœur ne se trouble point, et ne s'alarme point. »" },
-        en: { ref: "John 14:27", text: "“Peace I leave with you; My peace I give you. Do not let your hearts be troubled and do not be afraid.”" },
         de: { ref: "Johannes 14:27", text: "„Den Frieden lasse ich euch, meinen Frieden gebe ich euch. Euer Herz erschrecke nicht und fürchte sich nicht.“" },
+        en: { ref: "John 14:27", text: "“Peace I leave with you; My peace I give you. Do not let your hearts be troubled and do not be afraid.”" },
+        fr: { ref: "Jean 14:27", text: "« Je vous laisse la paix, je vous donne ma paix. Que votre cœur ne se trouble point, et ne s'alarme point. »" },
         it: { ref: "Giovanni 14:27", text: "«Vi lascio la pace, vi do la mia pace. Non sia turbato il vostro cuore e non abbia paura.»" },
         es: { ref: "Juan 14:27", text: "“La paz os dejo, mi paz os doy. No se turbe vuestro corazón, ni tenga miedo.”" },
         ru: { ref: "Иоанна 14:27", text: "«Мир оставляю вам, мир Мой даю вам. Да не смущается сердце ваше и да не устрашается.»" }
@@ -1305,6 +1301,7 @@
     return entry[lang] || entry['en'] || entry['bg'];
   }
 
+  /* ПЪЛЕН РЕЧНИК ЗА СИНХРОНИЗАЦИЯ НА ВСИЧКИ ЕЗИЦИ */
   const TRANSLATIONS = {
     bg: {
       alertOn: "Известия: Вкл", alertOff: "Известия: Изкл",
@@ -1326,12 +1323,49 @@
       btnJan1: "⏮ 1-ви Януари", btnToday: "⭐ Днес", btnDec31: "31-ви Декември ⏭",
       settingsTitle: "Часови график & Известия", settingsSub: "Настрой точните часове за ежедневието си",
       btnCancel: "Затвори", btnSave: "Запази настройките",
+      onboardTitle: "Избор на Езици", onboardSub: "Изберете езиците за вашия тефтер:",
+      lblDefaultLangSelect: "Основен език (по подразбиране):", btnSaveOnboardLang: "Потвърди & Отвори Тефтера ➔",
       lblAmen: "Амин • Прието",
+      parchmentSettingsTitle: "Настройки", parchmentSettingsSaved: "Запазени", parchmentSettingsDesc: "Часовият график е актуализиран успешно!",
+      parchmentNotifTitle: "🔔 Локални Известия", parchmentNotifActive: "Активни", parchmentNotifDesc: "Известията за стиховете и графика са включени!",
+      parchmentGeminiTitle: "✦ Gemini Духовен Съветник", parchmentGeminiSub: "Вдъхновение", parchmentGeminiText: "„Не бой се, защото Аз съм с тебе; не се смущавай, защото Аз съм твой Бог; ще те укрепя, да, ще ти помогна!“",
       scheduleDefault: [
         { t: "07:00", a: "Молитва & Утро" }, { t: "09:00", a: "Труд с радост" }, { t: "12:00", a: "Обедна почивка" },
         { t: "15:00", a: "Добро дело" }, { t: "18:00", a: "Семеен уют" }, { t: "21:00", a: "Благодарност" }
       ],
       tasksDefault: ["15 минути утринна молитва и тишина", "Четене на глава от Евангелието", "Топла дума за близък човек", "Благодарност за даровете на деня"]
+    },
+    de: {
+      alertOn: "Alarm: Ein", alertOff: "Alarm: Aus",
+      coverAnnualBadge: "✦ JAHRESPLANER ✦", coverBrandSub: "GLAUBE & GNADE",
+      coverBookTitle: (y) => `Jahresplaner ${y}`, coverPagesSub: (d) => `${d} Seiten • 1. Januar – 31. Dezember`,
+      photoPlaceholder: "Dein Foto Hier", btnChangePhoto: "📷 Foto ändern", belongsTo: "Gehört zu:",
+      openBookBtn: (dt) => `📖 NOTIZBUCH ÖFFNEN (${dt})`, coverFooterSub: "Blättern Sie die Seiten vom 1. Januar bis zum Jahresende",
+      backToCover: "📖 UMSCHLAG", headerFaith: "GLAUBE & GNADE", scriptDay: "Tag",
+      dayProgress: (cur, tot) => `Tag ${cur} von ${tot}`,
+      searchTitle: "✦ BIBEL-SUCHE (GEMINI AI)", searchSubtitle: "Inspiration & Themen",
+      searchPlaceholder: "Thema suchen (z.B. Frieden, Kraft, Hoffnung)...", searchBtn: "Suchen",
+      secScriptures: "WORT GOTTES • DREI TAGESVERSE",
+      tagMorning: "🌅 Morgenkraft", tagMidday: "☀️ Mittagsruhe", tagEvening: "🌙 Abendfrieden",
+      btnParchment: "Pergament", btnListen: "🔊 Hören",
+      secSchedule: "STUNDENPLAN • DEIN TAG", btnEditSchedule: "✏️ Bearbeiten",
+      secTasks: "TAGESINTENTIONEN", tasksCount: (d, t) => `${d} von ${t} Erfüllt`, addTask: "+ Vorsatz hinzufügen",
+      sliderBanner: (cur, tot, dt) => `📜 Jahr durchblättern: Tag ${cur} / ${tot} (${dt})`,
+      sliderStart: "1. Jan", sliderEnd: "31. Dez",
+      btnJan1: "⏮ 1. Januar", btnToday: "⭐ Heute", btnDec31: "31. Dezember ⏭",
+      settingsTitle: "Tagesplan & Wecker", settingsSub: "Stellen Sie Ihre täglichen Zeiten ein",
+      btnCancel: "Schließen", btnSave: "Speichern",
+      onboardTitle: "Sprachauswahl", onboardSub: "Wählen Sie die gewünschten Sprachen für Ihren Planer:",
+      lblDefaultLangSelect: "Hauptsprache (Standard):", btnSaveOnboardLang: "Bestätigen & Öffnen ➔",
+      lblAmen: "Amen • Empfangen",
+      parchmentSettingsTitle: "Einstellungen", parchmentSettingsSaved: "Gespeichert", parchmentSettingsDesc: "Der Tagesplan wurde erfolgreich aktualisiert!",
+      parchmentNotifTitle: "🔔 Lokale Benachrichtigungen", parchmentNotifActive: "Aktiv", parchmentNotifDesc: "Benachrichtigungen für Bibelverse und Zeiten sind aktiv!",
+      parchmentGeminiTitle: "✦ Gemini Geistlicher Ratgeber", parchmentGeminiSub: "Inspiration", parchmentGeminiText: "„Fürchte dich nicht, denn ich bin mit dir; sei nicht ängstlich, denn ich bin dein Gott; ich stärke dich, ich helfe dir auch!“",
+      scheduleDefault: [
+        { t: "07:00", a: "Morgengebet" }, { t: "09:00", a: "Freudige Arbeit" }, { t: "12:00", a: "Mittagspause" },
+        { t: "15:00", a: "Gute Tat" }, { t: "18:00", a: "Familienzeit" }, { t: "21:00", a: "Dankbarkeit" }
+      ],
+      tasksDefault: ["15 Minuten Morgengebet und Stille", "Lesung eines Kapitels im Evangelium", "Ein gutes Wort für einen Mitmenschen", "Dank für die Gaben des Tages"]
     },
     en: {
       alertOn: "Alerts: On", alertOff: "Alerts: Off",
@@ -1347,51 +1381,179 @@
       tagMorning: "🌅 Morning Light", tagMidday: "☀️ Midday Strength", tagEvening: "🌙 Evening Peace",
       btnParchment: "Parchment", btnListen: "🔊 Listen",
       secSchedule: "DAILY SCHEDULE • TODAY", btnEditSchedule: "✏️ Edit schedule",
-      secTasks: "DAILY INTENTIONS", tasksCount: (d, t) => `${d} of ${t} Completed`, addTask: "+ Add intention...",
+      secTasks: "DAILY INTENTIONS", tasksCount: (d, t) => `${d} of ${t} Completed`, addTask: "+ Add intention",
       sliderBanner: (cur, tot, dt) => `📜 Browse Year: Day ${cur} / ${tot} (${dt})`,
       sliderStart: "Jan 1", sliderEnd: "Dec 31",
       btnJan1: "⏮ January 1", btnToday: "⭐ Today", btnDec31: "December 31 ⏭",
       settingsTitle: "Daily Schedule & Alerts", settingsSub: "Configure your daily rhythm",
       btnCancel: "Close", btnSave: "Save Settings",
+      onboardTitle: "Choose Languages", onboardSub: "Select the languages for your planner:",
+      lblDefaultLangSelect: "Primary language (default):", btnSaveOnboardLang: "Confirm & Open Planner ➔",
       lblAmen: "Amen • Received",
+      parchmentSettingsTitle: "Settings", parchmentSettingsSaved: "Saved", parchmentSettingsDesc: "Daily schedule updated successfully!",
+      parchmentNotifTitle: "🔔 Local Alerts", parchmentNotifActive: "Active", parchmentNotifDesc: "Alerts for scriptures and daily schedule are active!",
+      parchmentGeminiTitle: "✦ Gemini Spiritual Advisor", parchmentGeminiSub: "Inspiration", parchmentGeminiText: "“Fear not, for I am with you; be not dismayed, for I am your God; I will strengthen you, I will help you!”",
       scheduleDefault: [
         { t: "07:00", a: "Morning Devotion" }, { t: "09:00", a: "Joyful Labor" }, { t: "12:00", a: "Midday Rest" },
         { t: "15:00", a: "Act of Kindness" }, { t: "18:00", a: "Family Time" }, { t: "21:00", a: "Night Gratitude" }
       ],
       tasksDefault: ["15 minutes of quiet prayer", "Reading a Gospel chapter", "A warm word or deed for someone", "Evening gratitude for daily gifts"]
+    },
+    fr: {
+      alertOn: "Alertes : Oui", alertOff: "Alertes : Non",
+      coverAnnualBadge: "✦ AGENDA ANNUEL ✦", coverBrandSub: "FOI & GRÂCE",
+      coverBookTitle: (y) => `Agenda Annuel ${y}`, coverPagesSub: (d) => `${d} Pages • 1er Janvier – 31 Décembre`,
+      photoPlaceholder: "Votre Photo Ici", btnChangePhoto: "📷 Changer la photo", belongsTo: "Appartient à :",
+      openBookBtn: (dt) => `📖 OUVRIR L'AGENDA (${dt})`, coverFooterSub: "Feuilletez les pages du 1er janvier jusqu'à la fin de l'année",
+      backToCover: "📖 COUVERTURE", headerFaith: "FOI & GRÂCE", scriptDay: "Jour",
+      dayProgress: (cur, tot) => `Jour ${cur} sur ${tot}`,
+      searchTitle: "✦ RECHERCHE BIBLIQUE (GEMINI AI)", searchSubtitle: "Inspiration & Thèmes",
+      searchPlaceholder: "Rechercher un thème (ex. paix, force)...", searchBtn: "Chercher",
+      secScriptures: "SAINTES ÉCRITURES • 3 VERSETS DU JOUR",
+      tagMorning: "🌅 Lumière du Matin", tagMidday: "☀️ Force de Midi", tagEvening: "🌙 Paix du Soir",
+      btnParchment: "Parchemin", btnListen: "🔊 Écouter",
+      secSchedule: "HORAIRE DU JOUR", btnEditSchedule: "✏️ Modifier",
+      secTasks: "INTENTIONS & DEVOIRS DU JOUR", tasksCount: (d, t) => `${d} sur ${t} Accomplies`, addTask: "+ Ajouter une intention",
+      sliderBanner: (cur, tot, dt) => `📜 Parcourir l'année : Jour ${cur} / ${tot} (${dt})`,
+      sliderStart: "1 janv", sliderEnd: "31 déc",
+      btnJan1: "⏮ 1er Janvier", btnToday: "⭐ Aujourd'hui", btnDec31: "31 Décembre ⏭",
+      settingsTitle: "Horaire & Rappels", settingsSub: "Personnalisez votre rythme quotidien",
+      btnCancel: "Fermer", btnSave: "Enregistrer",
+      onboardTitle: "Choix des Langues", onboardSub: "Sélectionnez les langues pour votre agenda :",
+      lblDefaultLangSelect: "Langue principale (par défaut) :", btnSaveOnboardLang: "Confirmer & Ouvrir ➔",
+      lblAmen: "Amen • Reçu",
+      parchmentSettingsTitle: "Paramètres", parchmentSettingsSaved: "Enregistrés", parchmentSettingsDesc: "L'horaire a été mis à jour avec succès !",
+      parchmentNotifTitle: "🔔 Alertes Locales", parchmentNotifActive: "Actives", parchmentNotifDesc: "Les alertes pour les versets et l'horaire sont prêtes !",
+      parchmentGeminiTitle: "✦ Conseiller Spirituel Gemini", parchmentGeminiSub: "Inspiration", parchmentGeminiText: "« Ne crains rien, car je suis avec toi; ne promène pas des regards inquiets, car je suis ton Dieu; je te fortifie, je viens à ton secours ! »",
+      scheduleDefault: [
+        { t: "07:00", a: "Prière & Matin" }, { t: "09:00", a: "Travail avec joie" }, { t: "12:00", a: "Pause déjeuner" },
+        { t: "15:00", a: "Bonne action" }, { t: "18:00", a: "Douceur familiale" }, { t: "21:00", a: "Gratitude du soir" }
+      ],
+      tasksDefault: ["15 minutes de prière silencieuse", "Lecture d'un chapitre de l'Évangile", "Une parole bienveillante à un proche", "Gratitude pour les bénédictions du jour"]
+    },
+    it: {
+      alertOn: "Avvisi: Attivi", alertOff: "Avvisi: Disattivi",
+      coverAnnualBadge: "✦ TACCUINO ANNUALE ✦", coverBrandSub: "FEDE & GRAZIA",
+      coverBookTitle: (y) => `Taccuino Annuale ${y}`, coverPagesSub: (d) => `${d} Pagine • 1 Gennaio – 31 Dicembre`,
+      photoPlaceholder: "La Tua Foto Qui", btnChangePhoto: "📷 Cambia foto", belongsTo: "Appartiene a:",
+      openBookBtn: (dt) => `📖 APRI TACCUINO (${dt})`, coverFooterSub: "Sfoglia le pagine dal 1° gennaio alla fine dell'anno",
+      backToCover: "📖 COPERTINA", headerFaith: "FEDE & GRAZIA", scriptDay: "Giorno",
+      dayProgress: (cur, tot) => `Giorno ${cur} di ${tot}`,
+      searchTitle: "✦ RICERCA BIBLICA (GEMINI AI)", searchSubtitle: "Ispirazione & Temi",
+      searchPlaceholder: "Cerca tema (es. pace, speranza, forza)...", searchBtn: "Cerca",
+      secScriptures: "PAROLA DI DIO • TRE VERSETTI",
+      tagMorning: "🌅 Luce del Mattino", tagMidday: "☀️ Forza Meridiana", tagEvening: "🌙 Pace della Sera",
+      btnParchment: "Pergamena", btnListen: "🔊 Ascolta",
+      secSchedule: "ORARIO DEL GIORNO", btnEditSchedule: "✏️ Modifica",
+      secTasks: "INTENZIONI DEL GIORNO", tasksCount: (d, t) => `${d} di ${t} Completate`, addTask: "+ Aggiungi intenzione",
+      sliderBanner: (cur, tot, dt) => `📜 Sfoglia l'anno: Giorno ${cur} / ${tot} (${dt})`,
+      sliderStart: "1 gen", sliderEnd: "31 dic",
+      btnJan1: "⏮ 1 Gennaio", btnToday: "⭐ Oggi", btnDec31: "31 Dicembre ⏭",
+      settingsTitle: "Orari e Notifiche", settingsSub: "Imposta il ritmo delle tue giornate",
+      btnCancel: "Chiudi", btnSave: "Salva",
+      onboardTitle: "Scelta delle Lingue", onboardSub: "Seleziona le lingue per il tuo diario:",
+      lblDefaultLangSelect: "Lingua principale (predefinita):", btnSaveOnboardLang: "Conferma & Apri ➔",
+      lblAmen: "Amen • Ricevuto",
+      parchmentSettingsTitle: "Impostazioni", parchmentSettingsSaved: "Salvate", parchmentSettingsDesc: "Orario giornaliero aggiornato con successo!",
+      parchmentNotifTitle: "🔔 Avvisi Locali", parchmentNotifActive: "Attivi", parchmentNotifDesc: "Notifiche per versetti e orari attivate!",
+      parchmentGeminiTitle: "✦ Consigliere Spirituale Gemini", parchmentGeminiSub: "Ispirazione", parchmentGeminiText: "«Non temere, perché io sono con te; non smarrirti, perché io sono il tuo Dio; io ti fortifico, io ti soccorro!»",
+      scheduleDefault: [
+        { t: "07:00", a: "Preghiera del Mattino" }, { t: "09:00", a: "Lavoro con gioia" }, { t: "12:00", a: "Pausa pranzo" },
+        { t: "15:00", a: "Gesto gentile" }, { t: "18:00", a: "Tempo in famiglia" }, { t: "21:00", a: "Ringraziamento" }
+      ],
+      tasksDefault: ["15 minuti di preghiera mattutina", "Lettura del Vangelo", "Una parola di conforto a qualcuno", "Gratitudine per i doni ricevuti"]
+    },
+    es: {
+      alertOn: "Alertas: Sí", alertOff: "Alertas: No",
+      coverAnnualBadge: "✦ PLANIFICADOR ANUAL ✦", coverBrandSub: "FE & GRACIA",
+      coverBookTitle: (y) => `Planificador Anual ${y}`, coverPagesSub: (d) => `${d} Páginas • 1 Enero – 31 Diciembre`,
+      photoPlaceholder: "Tu Foto Aquí", btnChangePhoto: "📷 Cambiar foto", belongsTo: "Pertenece a:",
+      openBookBtn: (dt) => `📖 ABRIR CUADERNO (${dt})`, coverFooterSub: "Pasa las páginas desde el 1 de enero hasta el final del año",
+      backToCover: "📖 PORTADA", headerFaith: "FE & GRACIA", scriptDay: "Día",
+      dayProgress: (cur, tot) => `Día ${cur} de ${tot}`,
+      searchTitle: "✦ BUSCADOR BÍBLICO (GEMINI AI)", searchSubtitle: "Inspiración & Temas",
+      searchPlaceholder: "Buscar tema (ej. paz, esperanza, fuerza)...", searchBtn: "Buscar",
+      secScriptures: "SANTAS ESCRITURAS • 3 VERSÍCULOS AL DÍA",
+      tagMorning: "🌅 Luz de la Mañana", tagMidday: "☀️ Fuerza del Mediodía", tagEvening: "🌙 Paz de la Tarde",
+      btnParchment: "Pergamino", btnListen: "🔊 Escuchar",
+      secSchedule: "HORARIO DEL DÍA", btnEditSchedule: "✏️ Modificar",
+      secTasks: "INTENCIONES & DEBERES DIARIOS", tasksCount: (d, t) => `${d} de ${t} Cumplidas`, addTask: "+ Añadir intención",
+      sliderBanner: (cur, tot, dt) => `📜 Hojea el año: Día ${cur} / ${tot} (${dt})`,
+      sliderStart: "1 ene", sliderEnd: "31 dic",
+      btnJan1: "⏮ 1 de Enero", btnToday: "⭐ Hoy", btnDec31: "31 de Diciembre ⏭",
+      settingsTitle: "Horario y Notificaciones", settingsSub: "Configura tus horas diarias",
+      btnCancel: "Cerrar", btnSave: "Guardar",
+      onboardTitle: "Selección de Idiomas", onboardSub: "Selecciona los idiomas para tu cuaderno:",
+      lblDefaultLangSelect: "Idioma principal (por defecto):", btnSaveOnboardLang: "Confirmar & Abrir ➔",
+      lblAmen: "Amén • Recibido",
+      parchmentSettingsTitle: "Ajustes", parchmentSettingsSaved: "Guardados", parchmentSettingsDesc: "¡Horario actualizado correctamente!",
+      parchmentNotifTitle: "🔔 Alertas Locales", parchmentNotifActive: "Activas", parchmentNotifDesc: "¡Notificaciones de versículos y horario listas!",
+      parchmentGeminiTitle: "✦ Consejero Espiritual Gemini", parchmentGeminiSub: "Inspiración", parchmentGeminiText: "«No temas, porque yo estoy contigo; no desmayes, porque yo soy tu Dios que te esfuerzo; siempre te ayudaré!»",
+      scheduleDefault: [
+        { t: "07:00", a: "Oración de la Mañana" }, { t: "09:00", a: "Trabajo con alegría" }, { t: "12:00", a: "Almuerzo y pausa" },
+        { t: "15:00", a: "Buena obra" }, { t: "18:00", a: "Tiempo en familia" }, { t: "21:00", a: "Gratitud nocturna" }
+      ],
+      tasksDefault: ["15 minutos de oración y silencio", "Lectura de un capítulo del Evangelio", "Una palabra de aliento a un ser querido", "Gratitud por las bendiciones del día"]
+    },
+    ru: {
+      alertOn: "Оповещения: Вкл", alertOff: "Оповещения: Выкл",
+      coverAnnualBadge: "✦ ГОДОВОЙ ПЛАНЕР ✦", coverBrandSub: "ВЕРА & БЛАГОДАТЬ",
+      coverBookTitle: (y) => `Годовой Планер ${y}`, coverPagesSub: (d) => `${d} Страниц • 1 Января – 31 Декабря`,
+      photoPlaceholder: "Ваше Фото Здесь", btnChangePhoto: "📷 Сменить фото", belongsTo: "Принадлежит:",
+      openBookBtn: (dt) => `📖 ОТКРЫТЬ ПЛАНЕР (${dt})`, coverFooterSub: "Листайте страницы с 1 января до конца года",
+      backToCover: "📖 ОБЛОЖКА", headerFaith: "ВЕРА & БЛАГОДАТЬ", scriptDay: "День",
+      dayProgress: (cur, tot) => `День ${cur} из ${tot}`,
+      searchTitle: "✦ БИБЛЕЙСКИЙ ПОИСК (GEMINI AI)", searchSubtitle: "Вдохновение и Темы",
+      searchPlaceholder: "Поиск темы (напр. мир, сила, надежда)...", searchBtn: "Найти",
+      secScriptures: "СВЯЩЕННОЕ ПИСАНИЕ • 3 СТИХА НА ДЕНЬ",
+      tagMorning: "🌅 Утренний Свет", tagMidday: "☀️ Дневная Сила", tagEvening: "🌙 Вечерний Покой",
+      btnParchment: "Пергамент", btnListen: "🔊 Слушать",
+      secSchedule: "РАСПИСАНИЕ ДНЯ", btnEditSchedule: "✏️ Редактировать",
+      secTasks: "НАМЕРЕНИЯ & ДЕЛА НА ДЕНЬ", tasksCount: (d, t) => `${d} из ${t} Выполнено`, addTask: "+ Добавить намерение",
+      sliderBanner: (cur, tot, dt) => `📜 Просмотр года: День ${cur} / ${tot} (${dt})`,
+      sliderStart: "1 янв", sliderEnd: "31 дек",
+      btnJan1: "⏮ 1 Января", btnToday: "⭐ Сегодня", btnDec31: "31 Декабря ⏭",
+      settingsTitle: "Расписание и Оповещения", settingsSub: "Настройте время молитвы и дел",
+      btnCancel: "Закрыть", btnSave: "Сохранить",
+      onboardTitle: "Выбор языков", onboardSub: "Выберите языки для планера:",
+      lblDefaultLangSelect: "Основной язык (по умолчанию):", btnSaveOnboardLang: "Подтвердить & Открыть ➔",
+      lblAmen: "Аминь • Принято",
+      parchmentSettingsTitle: "Настройки", parchmentSettingsSaved: "Сохранены", parchmentSettingsDesc: "Расписание успешно обновлено!",
+      parchmentNotifTitle: "🔔 Локальные Оповещения", parchmentNotifActive: "Активны", parchmentNotifDesc: "Оповещения для стихов и графика включены!",
+      parchmentGeminiTitle: "✦ Духовный Советник Gemini", parchmentGeminiSub: "Вдохновение", parchmentGeminiText: "«Не бойся, ибо Я с тобою; не смущайся, ибо Я Бог твой; Я укреплю тебя, и помогу тебе!»",
+      scheduleDefault: [
+        { t: "07:00", a: "Утренняя молитва" }, { t: "09:00", a: "Труд с радостью" }, { t: "12:00", a: "Обеденный отдых" },
+        { t: "15:00", a: "Доброе дело" }, { t: "18:00", a: "Семейный уют" }, { t: "21:00", a: "Благодарность" }
+      ],
+      tasksDefault: ["15 минут утренней молитвы", "Чтение главы Евангелия", "Доброе слово близкому", "Благодарность за дары дня"]
     }
   };
 
-  /* WEBAUDIO SOUND: SOFT GENTLE CATHEDRAL CHIME */
   function playParchmentChime() {
     try {
       if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
       if (audioCtx.state === 'suspended') audioCtx.resume();
-
       const osc = audioCtx.createOscillator();
       const gain = audioCtx.createGain();
-
       osc.type = 'sine';
-      osc.frequency.setValueAtTime(528, audioCtx.currentTime); // Solfeggio 528Hz Love/Miracle frequency
+      osc.frequency.setValueAtTime(528, audioCtx.currentTime);
       osc.frequency.exponentialRampToValueAtTime(792, audioCtx.currentTime + 0.15);
-
       gain.gain.setValueAtTime(0.01, audioCtx.currentTime);
       gain.gain.exponentialRampToValueAtTime(0.25, audioCtx.currentTime + 0.05);
       gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1.2);
-
       osc.connect(gain);
       gain.connect(audioCtx.destination);
-
       osc.start();
       osc.stop(audioCtx.currentTime + 1.2);
     } catch(e) {}
   }
 
-  /* POP-UP PARCHMENT CONTROLLER */
   function showParchmentAlert(header, ref, text) {
+    const t = TRANSLATIONS[currentLang] || TRANSLATIONS.en;
     document.getElementById('parchmentAlertHeader').textContent = header;
     document.getElementById('parchmentAlertRef').textContent = ref;
     document.getElementById('parchmentAlertText').textContent = text;
+    document.getElementById('lblAmenBtn').textContent = t.lblAmen;
     document.getElementById('parchmentAlertModal').style.display = 'flex';
     playParchmentChime();
   }
@@ -1402,14 +1564,12 @@
 
   function openParchmentForSlot(slot) {
     const sc = getDailyScripture(currentDayOfYear, slot, currentLang);
-    const t = TRANSLATIONS[currentLang] || TRANSLATIONS.bg;
+    const t = TRANSLATIONS[currentLang] || TRANSLATIONS.en;
     const tag = slot === 'morning' ? t.tagMorning : slot === 'midday' ? t.tagMidday : t.tagEvening;
     showParchmentAlert(tag, sc.ref, sc.text);
   }
 
-  /* LOCAL NOTIFICATION & ALARM MONITOR */
   let lastFiredTime = '';
-
   function initLocalAlarmChecker() {
     setInterval(() => {
       const now = new Date();
@@ -1417,12 +1577,8 @@
       const mins = String(now.getMinutes()).padStart(2, '0');
       const timeStr = `${hours}:${mins}`;
 
-      // Prevent triggering multiple times in the same minute
-      if (timeStr === lastFiredTime) return;
+      if (timeStr === lastFiredTime || !alertsEnabled) return;
 
-      if (!alertsEnabled) return;
-
-      // 1. Check Scriptures
       if (timeStr === '07:30') {
         fireAlertEvent('morning');
         lastFiredTime = timeStr;
@@ -1434,53 +1590,37 @@
         lastFiredTime = timeStr;
       }
 
-      // 2. Check Schedule tasks
-      const t = TRANSLATIONS[currentLang] || TRANSLATIONS.bg;
+      const t = TRANSLATIONS[currentLang] || TRANSLATIONS.en;
       const matchingSchedule = t.scheduleDefault.find(item => item.t === timeStr);
       if (matchingSchedule) {
         fireScheduleAlert(matchingSchedule);
         lastFiredTime = timeStr;
       }
-    }, 15000); // checks every 15 sec
+    }, 15000);
   }
 
   function fireAlertEvent(slot) {
     const sc = getDailyScripture(currentDayOfYear, slot, currentLang);
-    const t = TRANSLATIONS[currentLang] || TRANSLATIONS.bg;
+    const t = TRANSLATIONS[currentLang] || TRANSLATIONS.en;
     const tag = slot === 'morning' ? t.tagMorning : slot === 'midday' ? t.tagMidday : t.tagEvening;
 
-    // Show native Android notification if permission granted
     if (Notification && Notification.permission === 'granted') {
-      if (navigator.serviceWorker && navigator.serviceWorker.controller) {
-        navigator.serviceWorker.ready.then(reg => {
-          reg.showNotification(`Daily Faith • ${tag}`, {
-            body: `${sc.ref}: ${sc.text}`,
-            icon: 'icon-192.png',
-            badge: 'icon-192.png',
-            vibrate: [200, 100, 200]
-          });
-        });
-      } else {
-        new Notification(`Daily Faith • ${tag}`, { body: `${sc.ref}: ${sc.text}`, icon: 'icon-192.png' });
-      }
+      new Notification(`Daily Faith • ${tag}`, { body: `${sc.ref}: ${sc.text}`, icon: 'icon-192.png' });
     }
-
-    // Always unroll the parchment on-screen
     showParchmentAlert(tag, sc.ref, sc.text);
   }
 
   function fireScheduleAlert(item) {
-    const title = `График: ${item.t}`;
+    const title = `${item.t} 🔔`;
     if (Notification && Notification.permission === 'granted') {
       new Notification(`Daily Faith • ${title}`, { body: item.a, icon: 'icon-192.png' });
     }
     showParchmentAlert(title, item.t, item.a);
   }
 
-  // Request Notification Permissions on toggle
   function toggleAlertsMaster() {
     alertsEnabled = !alertsEnabled;
-    const t = TRANSLATIONS[currentLang] || TRANSLATIONS.bg;
+    const t = TRANSLATIONS[currentLang] || TRANSLATIONS.en;
     const btn = document.getElementById('btnToggleAlerts');
     document.getElementById('alertLabel').textContent = alertsEnabled ? t.alertOn : t.alertOff;
     document.getElementById('alertIcon').textContent = alertsEnabled ? '🔔' : '🔕';
@@ -1489,14 +1629,12 @@
     if (alertsEnabled && 'Notification' in window) {
       Notification.requestPermission().then(permission => {
         if (permission === 'granted') {
-          // Immediately demonstrate the feature with a confirmation parchment
-          showParchmentAlert("🔔 Локални Известия", "Активни", "Известията за библейските стихове и графика ще изскачат точно на зададения час!");
+          showParchmentAlert(t.parchmentNotifTitle, t.parchmentNotifActive, t.parchmentNotifDesc);
         }
       });
     }
   }
 
-  // Clock
   setInterval(() => {
     const now = new Date();
     document.getElementById('digitalClock').textContent = now.toTimeString().split(' ')[0];
@@ -1507,7 +1645,7 @@
 
   function getActiveLanguages() {
     const saved = localStorage.getItem('faith_planner_active_langs');
-    return saved ? JSON.parse(saved) : ['bg', 'fr', 'en', 'de', 'it', 'es', 'ru'];
+    return saved ? JSON.parse(saved) : ['bg', 'de', 'en', 'fr', 'it', 'es', 'ru'];
   }
 
   function renderTopLanguageDropdown() {
@@ -1576,7 +1714,7 @@
   }
 
   function updateLanguageInterface() {
-    const t = TRANSLATIONS[currentLang] || TRANSLATIONS.bg;
+    const t = TRANSLATIONS[currentLang] || TRANSLATIONS.en;
     const total = getTotalDays(currentYear);
 
     // Top Bar
@@ -1635,6 +1773,12 @@
     document.getElementById('lblSettingsSub').textContent = t.settingsSub;
     document.getElementById('btnCancelSettings').textContent = t.btnCancel;
     document.getElementById('btnSaveSettings').textContent = t.btnSave;
+
+    // Onboarding Modal Labels
+    document.getElementById('lblOnboardTitle').textContent = t.onboardTitle;
+    document.getElementById('lblOnboardSub').textContent = t.onboardSub;
+    document.getElementById('lblDefaultLangSelect').textContent = t.lblDefaultLangSelect;
+    document.getElementById('btnSaveOnboardLang').textContent = t.btnSaveOnboardLang;
   }
 
   function renderCurrentDay() {
@@ -1649,7 +1793,7 @@
     document.getElementById('lblMonthName').textContent = monthStr.charAt(0).toUpperCase() + monthStr.slice(1);
     document.getElementById('lblWeekdayName').textContent = weekdayStr.charAt(0).toUpperCase() + weekdayStr.slice(1);
     
-    const t = TRANSLATIONS[currentLang] || TRANSLATIONS.bg;
+    const t = TRANSLATIONS[currentLang] || TRANSLATIONS.en;
     document.getElementById('lblDayProgress').textContent = t.dayProgress(currentDayOfYear, total);
     document.getElementById('lblSliderBanner').textContent = t.sliderBanner(currentDayOfYear, total, `${dateObj.getDate()} ${monthStr}`);
 
@@ -1669,14 +1813,14 @@
   }
 
   function renderScheduleGrid() {
-    const t = TRANSLATIONS[currentLang] || TRANSLATIONS.bg;
+    const t = TRANSLATIONS[currentLang] || TRANSLATIONS.en;
     const grid = document.getElementById('scheduleDisplayGrid');
     grid.innerHTML = '';
     t.scheduleDefault.forEach(item => {
       const card = document.createElement('div');
       card.className = 'schedule-mini-badge';
       card.innerHTML = `<div class="sch-time">${item.t} 🔔</div><div class="sch-act">${item.a}</div>`;
-      card.onclick = () => showParchmentAlert(`График: ${item.t}`, "Напомняне", item.a);
+      card.onclick = () => showParchmentAlert(`График: ${item.t}`, item.t, item.a);
       grid.appendChild(card);
     });
   }
@@ -1684,13 +1828,16 @@
   function switchAppLanguage(lang) {
     currentLang = lang;
     localStorage.setItem('faith_planner_lang', lang);
+    renderTopLanguageDropdown();
     updateLanguageInterface();
     renderCurrentDay();
   }
 
   function promptChangeOwner() {
     const current = document.getElementById('ownerNameDisplay').textContent;
-    const newName = prompt("Вашето име / Your Name:", current);
+    const promptMsg = currentLang === 'de' ? "Namen eingeben:" : 
+                      currentLang === 'en' ? "Enter your name:" : "Въведете вашето име:";
+    const newName = prompt(promptMsg, current);
     if (newName && newName.trim()) {
       document.getElementById('ownerNameDisplay').textContent = newName.trim();
       localStorage.setItem('planner_owner_name', newName.trim());
@@ -1714,7 +1861,8 @@
   function handleScriptureSearch() {
     const q = document.getElementById('scriptureSearchInput').value.trim();
     if (!q) return;
-    showParchmentAlert("🔍 Gemini Търсач", `Резултат за: "${q}"`, "„Блажени онези, които гладуват и жадуват за правдата, защото те ще се наситят.“ — Матей 5:6");
+    const t = TRANSLATIONS[currentLang] || TRANSLATIONS.en;
+    showParchmentAlert(t.searchTitle, `"${q}"`, t.parchmentGeminiText);
   }
 
   function readScriptureAudio(elementId) {
@@ -1728,7 +1876,6 @@
     }
   }
 
-  // Tasks
   function getTaskStorageKey() {
     return `tasks_${currentYear}_${currentDayOfYear}_${currentLang}`;
   }
@@ -1739,7 +1886,7 @@
     const container = document.getElementById('tasksListContainer');
     container.innerHTML = '';
 
-    const t = TRANSLATIONS[currentLang] || TRANSLATIONS.bg;
+    const t = TRANSLATIONS[currentLang] || TRANSLATIONS.en;
     const defaultList = saved.length ? saved : t.tasksDefault.map(txt => ({ text: txt, done: false }));
 
     let completedCount = 0;
@@ -1759,7 +1906,7 @@
 
   function toggleTask(index) {
     const key = getTaskStorageKey();
-    const t = TRANSLATIONS[currentLang] || TRANSLATIONS.bg;
+    const t = TRANSLATIONS[currentLang] || TRANSLATIONS.en;
     let saved = JSON.parse(localStorage.getItem(key) || '[]');
     if (!saved.length) {
       saved = t.tasksDefault.map(txt => ({ text: txt, done: false }));
@@ -1786,9 +1933,8 @@
     renderTasksForDay();
   }
 
-  // Modals & Handlers
   function openScheduleSettings() {
-    const t = TRANSLATIONS[currentLang] || TRANSLATIONS.bg;
+    const t = TRANSLATIONS[currentLang] || TRANSLATIONS.en;
     const container = document.getElementById('scheduleRowsContainer');
     container.innerHTML = '';
     t.scheduleDefault.forEach(item => {
@@ -1809,11 +1955,13 @@
 
   function saveScheduleSettings() {
     closeScheduleSettings();
-    showParchmentAlert("Настройки", "Запазени", "Часовият график е актуализиран успешно!");
+    const t = TRANSLATIONS[currentLang] || TRANSLATIONS.en;
+    showParchmentAlert(t.parchmentSettingsTitle, t.parchmentSettingsSaved, t.parchmentSettingsDesc);
   }
 
   function openGeminiAdvisor() {
-    showParchmentAlert("✦ Gemini Духовен Съветник", "Вдъхновение", "„Не бой се, защото Аз съм с тебе; не се смущавай, защото Аз съм твой Бог; ще те укрепя, да, ще ти помогна!“");
+    const t = TRANSLATIONS[currentLang] || TRANSLATIONS.en;
+    showParchmentAlert(t.parchmentGeminiTitle, t.parchmentGeminiSub, t.parchmentGeminiText);
   }
 
   function openLanguageManager() {
@@ -1902,7 +2050,6 @@
       openLanguageManager();
     }
 
-    // Start background alarm monitor
     initLocalAlarmChecker();
   });
 </script>
