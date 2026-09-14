@@ -1100,7 +1100,6 @@
   let currentLang = 'bg';
   let alertsEnabled = true;
 
-  // Master Language Definitions
   const ALL_LANGUAGES = {
     bg: { name: "Български", flag: "🇧🇬", locale: "bg-BG" },
     fr: { name: "Français", flag: "🇫🇷", locale: "fr-FR" },
@@ -1114,49 +1113,160 @@
     el: { name: "Ελληνικά", flag: "🇬🇷", locale: "el-GR" }
   };
 
-  // Bible Verses
-  const SCRIPTURE_COLLECTION = {
-    1: {
-      morning: {
+  /* ДИНАМИЧНИ ПУЛОВЕ СЪС СТИХОВЕ — РАЗЛИЧНИ ВСЕКИ ДЕН */
+  const SCRIPTURE_POOLS = {
+    morning: [
+      {
         bg: { ref: "Псалм 142:8", text: "„Дай ми да чуя рано Твоята милост, защото на Тебе се уповавам; покажи ми пътя, по който да ходя, понеже към Тебе възнасям душата си.“" },
-        fr: { ref: "Psaume 143:8", text: "« Fais-moi dès le matin entendre ta bonté ! Car je me confie en toi. Fais-moi connaître le chemin où je dois marcher ! Car j'élève à toi mon âme. »" },
-        en: { ref: "Psalm 143:8", text: "“Cause me to hear Your lovingkindness in the morning, for in You do I trust; cause me to know the way wherein I should walk; for I lift up my soul unto You.”" },
-        de: { ref: "Psalm 143:8", text: "„Lass mich frühe hören deine Gnade; denn ich hoffe auf dich. Tue mir kund den Weg, darauf ich gehen soll; denn mich verlangt nach dir.“" },
-        it: { ref: "Salmo 143:8", text: "«Fammi udire la tua benignità la mattina, poiché in te confido; fammi conoscere la via per la quale devo camminare, poiché io elevo l'anima mia a te.»" },
-        es: { ref: "Salmos 143:8", text: "“Hazme oír por la mañana tu misericordia, porque en ti he confiado; hazme saber el camino por donde ande, porque a ti he elevado mi alma.”" },
-        ru: { ref: "Псалом 142:8", text: "«Даруй мне рано услышать милость Твою, ибо я на Тебя уповаю. Укажи мне путь, по которому мне идти, ибо к Тебе возношу я душу мою.»" },
-        pt: { ref: "Salmos 143:8", text: "«Faze-me ouvir a tua benignidade pela manhã, pois em ti confio; faze-me saber o caminho que devo seguir, pois a ti levanto a minha alma.»" },
-        ro: { ref: "Psalmii 143:8", text: "«Fă-mă să aud dis-de-dimineaţă bunătatea Ta, căci mă încred în Tine. Arată-mi calea pe care trebuie să umblu, căci la Tine îmi înalţ sufletul.»" },
-        el: { ref: "Ψαλμοί 143:8", text: "«Κάμε με να ακούσω το πρωί το έλεός σου, διότι σε σένα ελπίζω· γνώρισέ μου τον δρόμο στον οποίο πρέπει να περπατώ.»" }
+        fr: { ref: "Psaume 143:8", text: "« Fais-moi dès le matin entendre ta bonté ! Car je me confie en toi. Fais-moi connaître le chemin où je dois marcher ! »" },
+        en: { ref: "Psalm 143:8", text: "“Cause me to hear Your lovingkindness in the morning, for in You do I trust; cause me to know the way wherein I should walk.”" },
+        de: { ref: "Psalm 143:8", text: "„Lass mich frühe hören deine Gnade; denn ich hoffe auf dich. Tue mir kund den Weg, darauf ich gehen soll.“" },
+        it: { ref: "Salmo 143:8", text: "«Fammi udire la tua benignità la mattina, poiché in te confido; fammi conoscere la via per la quale devo camminare.»" },
+        es: { ref: "Salmos 143:8", text: "“Hazme oír por la mañana tu misericordia, porque en ti he confiado; hazme saber el camino por donde ande.”" },
+        ru: { ref: "Псалом 142:8", text: "«Даруй мне рано услышать милость Твою, ибо я на Тебя уповаю. Укажи мне путь, по которому мне идти.»" }
       },
-      midday: {
+      {
+        bg: { ref: "Плач Йеремиев 3:22-23", text: "„Милостите Господни не са се свършили; те се подновяват всяка сутрин; голяма е Твоята вярност!“" },
+        fr: { ref: "Lamentations 3:22-23", text: "« Les bontés de l'Éternel ne sont pas épuisées, elles se renouvellent chaque matin. Grande est ta fidélité ! »" },
+        en: { ref: "Lamentations 3:22-23", text: "“The steadfast love of the Lord never ceases; his mercies are new every morning; great is your faithfulness.”" },
+        de: { ref: "Klagelieder 3:22-23", text: "„Die Güte des Herrn ist's, dass wir nicht gar aus sind; seine Barmherzigkeit hat noch kein Ende, sondern sie ist alle Morgen neu.“" },
+        it: { ref: "Lamentazioni 3:22-23", text: "«È una grazia del Signore che non siamo stati interamente distrutti; le sue compassioni si rinnovano ogni mattina.»" },
+        es: { ref: "Lamentaciones 3:22-23", text: "“Por la misericordia del Señor no hemos sido consumidos; nuevas son cada mañana; grande es tu fidelidad.”" },
+        ru: { ref: "Плач Иеремии 3:22-23", text: "«По милости Господа мы не исчезли, ибо милосердие Его не истощилось. Оно обновляется каждое утро; велика верность Твоя!»" }
+      },
+      {
+        bg: { ref: "Псалм 118:24", text: "„Този е денят, който Господ е сътворил; нека се радваме и се веселим в него!“" },
+        fr: { ref: "Psaume 118:24", text: "« C'est ici la journée que l'Éternel a faite: Qu'elle soit pour nous un sujet d'allégresse et de joie ! »" },
+        en: { ref: "Psalm 118:24", text: "“This is the day that the Lord has made; let us rejoice and be glad in it.”" },
+        de: { ref: "Psalm 118:24", text: "„Dies ist der Tag, den der Herr gemacht hat; lasst uns freuen und fröhlich an ihm sein.“" },
+        it: { ref: "Salmo 118:24", text: "«Questo è il giorno che l'Eterno ha fatto; festeggiamo e rallegriamoci in esso!»" },
+        es: { ref: "Salmos 118:24", text: "“Este es el día que hizo el Señor; nos gozaremos y alegraremos en él.”" },
+        ru: { ref: "Псалом 117:24", text: "«Сей день сотворил Господь: возрадуемся и возвеселимся в оный!»" }
+      },
+      {
+        bg: { ref: "Псалм 90:14", text: "„Насити ни още на развиделяване с Твоята милост, за да се радваме и да се веселим през всичките си дни.“" },
+        fr: { ref: "Psaume 90:14", text: "« Rassasie-nous chaque matin de ta bonté, et nous serons toute notre vie dans la joie et l'allégresse. »" },
+        en: { ref: "Psalm 90:14", text: "“Satisfy us in the morning with Your steadfast love, that we may rejoice and be glad all our days.”" },
+        de: { ref: "Psalm 90:14", text: "„Fülle uns frühe mit deiner Gnade, so wollen wir rühmen und fröhlich sein unser Leben lang.“" },
+        it: { ref: "Salmo 90:14", text: "«Saziaci al mattino della tua benignità, e noi esulteremo e ci rallegreremo tutti i nostri giorni.»" },
+        es: { ref: "Salmos 90:14", text: "“De mañana sácianos de tu misericordia, y cantaremos y nos alegraremos todos nuestros días.”" },
+        ru: { ref: "Псалом 89:14", text: "«Рано насыти нас милостью Твоею, и мы будем радоваться и веселиться во все дни наши.»" }
+      },
+      {
+        bg: { ref: "Притчи 3:5-6", text: "„Уповавай се на Господа от все сърце и не се облягай на своя разум; във всичките си пътища признавай Него, и Той ще оправи пътеките ти.“" },
+        fr: { ref: "Proverbes 3:5-6", text: "« Confie-toi en l'Éternel de tout ton cœur, et ne t'appuie pas sur ta sagesse; Reconnais-le dans toutes tes voies, et Il aplanira tes sentiers. »" },
+        en: { ref: "Proverbs 3:5-6", text: "“Trust in the Lord with all your heart, and do not lean on your own understanding; in all your ways acknowledge Him, and He will make straight your paths.”" },
+        de: { ref: "Sprüche 3:5-6", text: "„Verlass dich auf den Herrn von ganzem Herzen, und verlass dich nicht auf deinen Verstand; gedenke an ihn in allen deinen Wegen, so wird er dich recht führen.“" },
+        it: { ref: "Proverbi 3:5-6", text: "«Confida nel Signore con tutto il cuore e non ti appoggiare sul tuo discernimento; riconoscilo in tutte le tue vie ed Egli appianerà i tuoi sentieri.»" },
+        es: { ref: "Proverbios 3:5-6", text: "“Fíate del Señor de todo tu corazón, y no te apoyes en tu propia prudencia. Reconócelo en todos tus caminos, y Él enderezará tus veredas.”" },
+        ru: { ref: "Притчи 3:5-6", text: "«Надейся на Господа всем сердцем твоим, и не полагайся на разум твой. Во всех путях твоих познавай Его, и Он направит стези твои.»" }
+      }
+    ],
+    midday: [
+      {
         bg: { ref: "Исая 40:29", text: "„Той дава сила на уморения и умножава мощта на изнемощелия. Ония, които се надяват на Господа, ще подновят силата си.“" },
         fr: { ref: "Ésaïe 40:29", text: "« Il donne de la force à celui qui est fatigué, et Il augmente la vigueur de celui qui tombe en défaillance. »" },
         en: { ref: "Isaiah 40:29", text: "“He gives power to the faint; and to them that have no might He increases strength.”" },
-        de: { ref: "Jesaja 40:29", text: "„Er gibt dem Müden Kraft und Stärke genug dem Unvermögenden. Die auf den Herrn harren, kriegen neue Kraft.“" },
-        it: { ref: "Isaia 40:29", text: "«Egli dà forza allo stanco e accresce vigore a colui che è spossato. Quelli che sperano nell'Eterno acquistano nuove forze.»" },
+        de: { ref: "Jesaja 40:29", text: "„Er gibt dem Müden Kraft und Stärke genug dem Unvermögenden.“" },
+        it: { ref: "Isaia 40:29", text: "«Egli dà forza allo stanco e accresce vigore a colui che è spossato.»" },
         es: { ref: "Isaías 40:29", text: "“Él da esfuerzo al cansado, y multiplica las fuerzas al que no tiene ningunas.”" },
-        ru: { ref: "Исаия 40:29", text: "«Он дает утомленному силу, и изнемогшему дарует крепость. А надеющиеся на Господа обновятся в силе.»" },
-        pt: { ref: "Isaías 40:29", text: "«Dá força ao cansado, e multiplica as forças ao que não tem nenhum vigor.»" },
-        ro: { ref: "Isaia 40:29", text: "«El dă tărie celui obosit şi măreşte puterea celui ce cade în slăbiciune.»" },
-        el: { ref: "Ησαΐας 40:29", text: "«Αυτός δίνει δύναμη στον εξαντλημένο, και αυξάνει την ισχύ σε εκείνον που δεν έχει δύναμη.»" }
+        ru: { ref: "Исаия 40:29", text: "«Он дает утомленному силу, и изнемогшему дарует крепость.»" }
       },
-      evening: {
+      {
+        bg: { ref: "Филипяни 4:13", text: "„Всичко мога чрез Исуса Христа, Който ме подкрепя и ми дава сила.“" },
+        fr: { ref: "Philippiens 4:13", text: "« Je puis tout par celui qui me fortifie, Christ. »" },
+        en: { ref: "Philippians 4:13", text: "“I can do all things through Christ who strengthens me.”" },
+        de: { ref: "Philipper 4:13", text: "„Ich vermag alles durch den, der mich mächtig macht, Christus.“" },
+        it: { ref: "Filippesi 4:13", text: "«Io posso ogni cosa in Colui che mi fortifica.»" },
+        es: { ref: "Filipenses 4:13", text: "“Todo lo puedo en Cristo que me fortalece.”" },
+        ru: { ref: "Филиппийцам 4:13", text: "«Все могу в укрепляющем меня Иисусе Христе.»" }
+      },
+      {
+        bg: { ref: "Исус Навиев 1:9", text: "„Бъди силен и смел! Не се плаши и не се страхувай, защото Господ, твоят Бог, е с тебе навсякъде, където и да ходиш.“" },
+        fr: { ref: "Josué 1:9", text: "« Ne t'ai-je pas donné cet ordre: Fortifie-toi et prends courage ? Ne t'effraie point, car l'Éternel est avec toi partout où tu iras. »" },
+        en: { ref: "Joshua 1:9", text: "“Be strong and courageous! Do not be frightened, for the Lord your God is with you wherever you go.”" },
+        de: { ref: "Josua 1:9", text: "„Sei getrost und unverzagt! Lass dir nicht grauen und entsetze dich nicht; denn der Herr, dein Gott, ist mit dir in allem, was du tun wirst.“" },
+        it: { ref: "Giosuè 1:9", text: "«Sii forte e coraggioso; non ti spaventare e non ti sgomentare, perché il Signore, il tuo Dio, sarà con te dovunque andrai.»" },
+        es: { ref: "Josué 1:9", text: "“Mira que te mando que te esfuerces y seas valiente; no temas ni desmayes, porque el Señor tu Dios estará contigo en dondequiera que vayas.”" },
+        ru: { ref: "Иисус Навин 1:9", text: "«Будь тверд и мужествен, не страшись и не ужасайся; ибо с тобою Господь Бог твой везде, куда ни пойдешь.»" }
+      },
+      {
+        bg: { ref: "Колосяни 3:23", text: "„Каквото и да вършите, работете от сърце, като за Господа, а не за човеци.“" },
+        fr: { ref: "Colossiens 3:23", text: "« Tout ce que vous faites, faites-le de bon cœur, comme pour le Seigneur et non pour des hommes. »" },
+        en: { ref: "Colossians 3:23", text: "“Whatever you do, work heartily, as for the Lord and not for men.”" },
+        de: { ref: "Kolosser 3:23", text: "„Alles, was ihr tut, das tut von Herzen als dem Herrn und nicht den Menschen.“" },
+        it: { ref: "Colossesi 3:23", text: "«Qualunque cosa facciate, fatela di buon animo, come per il Signore e non per gli uomini.»" },
+        es: { ref: "Colosenses 3:23", text: "“Y todo lo que hagáis, hacedlo de corazón, como para el Señor y no para los hombres.”" },
+        ru: { ref: "Колоссянам 3:23", text: "«И все, что делаете, делайте от души, как для Господа, а не для человеков.»" }
+      },
+      {
+        bg: { ref: "Римляни 8:28", text: "„И знаем, че всичко съдейства за добро на онези, които любят Бога.“" },
+        fr: { ref: "Romains 8:28", text: "« Nous savons, du reste, que toutes choses concourent au bien de ceux qui aiment Dieu. »" },
+        en: { ref: "Romans 8:28", text: "“And we know that in all things God works for the good of those who love Him.”" },
+        de: { ref: "Römer 8:28", text: "„Wir wissen aber, dass denen, die Gott lieben, alle Dinge zum Besten dienen.“" },
+        it: { ref: "Romani 8:28", text: "«Tutte le cose cooperano al bene per coloro che amano Dio.»" },
+        es: { ref: "Romanos 8:28", text: "“Y sabemos que a los que aman a Dios, todas las cosas les ayudan a bien.”" },
+        ru: { ref: "Римлянам 8:28", text: "«Любящим Бога, призванным по Его изволению, все содействует ко благу.»" }
+      }
+    ],
+    evening: [
+      {
         bg: { ref: "Псалм 4:8", text: "„Спокойно лягам и заспивам, защото само Ти, Господи, ме правиш да живея в безопасност.“" },
         fr: { ref: "Psaume 4:8", text: "« Je me couche et je m'endors en paix, car Toi seul, ô Éternel ! tu me fais habiter en sécurité. »" },
         en: { ref: "Psalm 4:8", text: "“In peace I will lie down and sleep, for You alone, Lord, make me dwell in safety.”" },
         de: { ref: "Psalm 4:8", text: "„Ich liege und schlafe ganz mit Frieden; denn allein du, Herr, hilfst mir, dass ich sicher wohne.“" },
         it: { ref: "Salmo 4:8", text: "«In pace mi coricherò e in pace dormirò, perché tu solo, o Eterno, mi fai abitare al sicuro.»" },
         es: { ref: "Salmos 4:8", text: "“En paz me acostaré, y asimismo dormiré; porque solo tú, Señor, me haces vivir confiado.”" },
-        ru: { ref: "Псалом 4:8", text: "«Спокойно ложусь я и сплю, ибо Ты, Господи, един даешь мне жить в безопасности.»" },
-        pt: { ref: "Salmos 4:8", text: "«Em paz também me deitarei e dormirei, porque só tu, Senhor, me fazes habitar em segurança.»" },
-        ro: { ref: "Psalmii 4:8", text: "«Eu mă culc şi adorm în pace, căci numai Tu, Doamne, îmi dai linişte în locuinţa mea.»" },
-        el: { ref: "Ψαλμοί 4:8", text: "«Με ειρήνη θα πλαγιάσω και αμέσως θα κοιμηθώ· επειδή εσύ μόνος, Κύριε, με κάνεις να κατοικώ με ασφάλεια.»" }
+        ru: { ref: "Псалом 4:8", text: "«Спокойно ложусь я и сплю, ибо Ты, Господи, един даешь мне жить в безопасности.»" }
+      },
+      {
+        bg: { ref: "Псалм 121:7-8", text: "„Господ ще те пази от всяко зло; Той ще пази душата ти. Господ ще пази излизането ти и влизането ти отсега и довека.“" },
+        fr: { ref: "Psaume 121:7-8", text: "« L'Éternel te gardera de tout mal, Il gardera ton âme; L'Éternel gardera ton départ et ton arrivée, dès maintenant et à jamais. »" },
+        en: { ref: "Psalm 121:7-8", text: "“The Lord will keep you from all evil; He will keep your soul. The Lord will keep your going out and your coming in forevermore.”" },
+        de: { ref: "Psalm 121:7-8", text: "„Der Herr behüte dich vor allem Übel, er behüte deine Seele. Der Herr behüte deinen Ausgang und Eingang von nun an bis in Ewigkeit!“" },
+        it: { ref: "Salmo 121:7-8", text: "«L'Eterno ti proteggerà da ogni male; Egli proteggerà l'anima tua. L'Eterno proteggerà il tuo uscire e il tuo entrare da ora e per sempre.»" },
+        es: { ref: "Salmos 121:7-8", text: "“El Señor te guardará de todo mal; Él guardará tu alma. El Señor guardará tu salida y tu entrada desde ahora y para siempre.”" },
+        ru: { ref: "Псалом 120:7-8", text: "«Господь сохранит тебя от всякого зла; сохранит душу твою Господь. Господь будет охранять выхождение твое и вхождение твое отныне и вовек.»" }
+      },
+      {
+        bg: { ref: "Йоан 14:27", text: "„Мир ви оставям; Моя мир ви давам; Аз не ви давам тъй, както светът дава. Да се не смущава сърцето ви, нито да се бои.“" },
+        fr: { ref: "Jean 14:27", text: "« Je vous laisse la paix, je vous donne ma paix. Que votre cœur ne se trouble point, et ne s'alarme point. »" },
+        en: { ref: "John 14:27", text: "“Peace I leave with you; my peace I give you. I do not give to you as the world gives. Do not let your hearts be troubled and do not be afraid.”" },
+        de: { ref: "Johannes 14:27", text: "„Den Frieden lasse ich euch, meinen Frieden gebe ich euch. Nicht gebe ich euch, wie die Welt gibt. Euer Herz erschrecke nicht und fürchte sich nicht.“" },
+        it: { ref: "Giovanni 14:27", text: "«Vi lascio la pace, vi do la mia pace. Non come il mondo dà, io do a voi. Non sia turbato il vostro cuore e non abbia paura.»" },
+        es: { ref: "Juan 14:27", text: "“La paz os dejo, mi paz os doy; yo no os la doy como el mundo la da. No se turbe vuestro corazón, ni tenga miedo.”" },
+        ru: { ref: "Иоанна 14:27", text: "«Мир оставляю вам, мир Мой даю вам; не так, как мир дает, Я даю вам. Да не смущается сердце ваше и да не устрашается.»" }
+      },
+      {
+        bg: { ref: "1 Петрово 5:7", text: "„Всяка ваша грижа възложете на Него, защото Той се грижи за вас.“" },
+        fr: { ref: "1 Pierre 5:7", text: "« Et déchargez-vous sur lui de tous vos soucis, car lui-même prend soin de vous. »" },
+        en: { ref: "1 Peter 5:7", text: "“Cast all your anxieties on Him, because He cares for you.”" },
+        de: { ref: "1. Petrus 5:7", text: "„Alle eure Sorge werfet auf ihn; denn er sorget für euch.“" },
+        it: { ref: "1 Pietro 5:7", text: "«Gettando su di lui ogni vostra sollecitudine, perché egli ha cura di voi.»" },
+        es: { ref: "1 Pedro 5:7", text: "“Echando toda vuestra ansiedad sobre Él, porque Él tiene cuidado de vosotros.”" },
+        ru: { ref: "1 Петра 5:7", text: "«Все заботы ваши возложите на Него, ибо Он печется о вас.»" }
+      },
+      {
+        bg: { ref: "Псалм 91:1-2", text: "„Който живее под покрива на Всевишния, той ще пребъдва под сянката на Всемогъщия. Ще казвам за Господа: Той е прибежище мое и крепост моя!“" },
+        fr: { ref: "Psaume 91:1-2", text: "« Celui qui demeure sous l'abri du Très-Haut repose à l'ombre du Tout-Puissant. Je dis à l'Éternel: Mon refuge et ma forteresse, mon Dieu en qui je me confie ! »" },
+        en: { ref: "Psalm 91:1-2", text: "“He who dwells in the secret place of the Most High shall abide under the shadow of the Almighty. I will say of the Lord, He is my refuge and my fortress!”" },
+        de: { ref: "Psalm 91:1-2", text: "„Wer unter dem Schirm des Höchsten sitzt und unter dem Schatten des Allmächtigen bleibt, der spricht zu dem Herrn: Meine Zuflucht und meine Burg!“" },
+        it: { ref: "Salmo 91:1-2", text: "«Chi dimora al riparo dell'Altissimo riposa all'ombra dell'Onnipotente. Io dico all'Eterno: Tu sei il mio rifugio e la mia fortezza!»" },
+        es: { ref: "Salmos 91:1-2", text: "“El que habita al abrigo del Altísimo morará bajo la sombra del Omnipotente. Diré yo al Señor: Esperanza mía, y castillo mío; mi Dios, en quien confiaré.”" },
+        ru: { ref: "Псалом 90:1-2", text: "«Живущий под кровом Всевышнего под сенью Всемогущего покоится. Говорит Господу: прибежище мое и защита моя, Бог мой, на Которого я уповаю!»" }
       }
-    }
+    ]
   };
 
-  // Comprehensive Dictionaries for 100% UI translation
+  /* ДЕТЕРМИНИРАНА ФУНКЦИЯ ЗА СТИХ НА ДЕНЯ */
+  function getDailyScripture(dayOfYear, slot, lang) {
+    const pool = SCRIPTURE_POOLS[slot];
+    // Всеки ден взима различен стих чрез модулно превъртане
+    const index = (dayOfYear - 1) % pool.length;
+    const entry = pool[index];
+    return entry[lang] || entry['en'] || entry['bg'];
+  }
+
   const TRANSLATIONS = {
     bg: {
       alertOn: "Известия: Вкл", alertOff: "Известия: Изкл",
@@ -1353,90 +1463,6 @@
         { t: "15:00", a: "Доброе дело" }, { t: "18:00", a: "Семейный уют" }, { t: "21:00", a: "Благодарность" }
       ],
       tasksDefault: ["15 минут утренней молитвы", "Чтение главы Евангелия", "Доброе слово близкому", "Благодарность за дары дня"]
-    },
-    pt: {
-      alertOn: "Alertas: Sim", alertOff: "Alertas: Não",
-      coverAnnualBadge: "✦ PLANNER ANUAL ✦", coverBrandSub: "FÉ & GRAÇA",
-      coverBookTitle: (y) => `Planner Anual ${y}`, coverPagesSub: (d) => `${d} Páginas • 1 de Janeiro – 31 de Dezembro`,
-      photoPlaceholder: "Sua Foto Aqui", btnChangePhoto: "📷 Trocar foto", belongsTo: "Pertence a:",
-      openBookBtn: (dt) => `📖 ABRIR PLANNER (${dt})`, coverFooterSub: "Folheie as páginas do início ao fim do ano",
-      backToCover: "📖 CAPA", headerFaith: "FÉ & GRAÇA", scriptDay: "Dia",
-      dayProgress: (cur, tot) => `Dia ${cur} de ${tot}`,
-      searchTitle: "✦ BUSCA BÍBLICA (GEMINI AI)", searchSubtitle: "Inspiração & Temas",
-      searchPlaceholder: "Pesquisar tema (ex: paz, esperança, força)...", searchBtn: "Buscar",
-      secScriptures: "ESCRITURAS SAGRADAS • 3 VERSÍCULOS",
-      tagMorning: "🌅 Luz da Manhã", tagMidday: "☀️ Força do Meio-dia", tagEvening: "🌙 Paz da Noite",
-      btnIlluminate: "✦ Iluminar", btnListen: "🔊 Ouvir",
-      secSchedule: "HORÁRIO DO DIA", btnEditSchedule: "✏️ Editar",
-      secTasks: "INTENÇÕES DO DIA", tasksCount: (d, t) => `${d} de ${t} Concluídas`, addTask: "+ Adicionar intenção",
-      sliderBanner: (cur, tot, dt) => `📜 Explorar o ano: Dia ${cur} / ${tot} (${dt})`,
-      sliderStart: "1 jan", sliderEnd: "31 dez",
-      btnJan1: "⏮ 1 de Janeiro", btnToday: "⭐ Hoje", btnDec31: "31 de Dezembro ⏭",
-      settingsTitle: "Horários e Alertas", settingsSub: "Configure seu ritmo diário",
-      btnCancel: "Fechar", btnSave: "Salvar",
-      onboardTitle: "Escolha de Idiomas", onboardSub: "Selecione os idiomas desejados para o seu planner:",
-      lblDefaultLang: "Idioma principal (padrão):", btnSaveOnboard: "Confirmar & Abrir Planner ➔",
-      scheduleDefault: [
-        { t: "07:00", a: "Oração da Manhã" }, { t: "09:00", a: "Trabalho alegre" }, { t: "12:00", a: "Almoço e pausa" },
-        { t: "15:00", a: "Boa ação" }, { t: "18:00", a: "Aconchego familiar" }, { t: "21:00", a: "Gratidão" }
-      ],
-      tasksDefault: ["15 minutos de oração e silêncio", "Leitura de um capítulo do Evangelho", "Uma palavra de carinho a alguém", "Gratidão pelas bênçãos do dia"]
-    },
-    ro: {
-      alertOn: "Alerte: Da", alertOff: "Alerte: Nu",
-      coverAnnualBadge: "✦ PLANIFICATOR ANUAL ✦", coverBrandSub: "CREDINȚĂ & HAR",
-      coverBookTitle: (y) => `Planificator Anual ${y}`, coverPagesSub: (d) => `${d} Pagini • 1 Ianuarie – 31 Decembrie`,
-      photoPlaceholder: "Poza Ta Aici", btnChangePhoto: "📷 Schimbă poza", belongsTo: "Aparține lui:",
-      openBookBtn: (dt) => `📖 DESCHIDE JURNALUL (${dt})`, coverFooterSub: "Răsfoiește paginile de la 1 ianuarie până la sfârșitul anului",
-      backToCover: "📖 COPERTĂ", headerFaith: "CREDINȚĂ & HAR", scriptDay: "Ziua",
-      dayProgress: (cur, tot) => `Ziua ${cur} din ${tot}`,
-      searchTitle: "✦ CĂUTARE BIBLICĂ (GEMINI AI)", searchSubtitle: "Inspirație & Teme",
-      searchPlaceholder: "Caută temă (ex. pace, speranță, putere)...", searchBtn: "Caută",
-      secScriptures: "SFÂNTA SCRIPTURĂ • 3 VERSETE PE ZI",
-      tagMorning: "🌅 Lumina Dimineții", tagMidday: "☀️ Puterea Amiezii", tagEvening: "🌙 Pacea Serii",
-      btnIlluminate: "✦ Luminează", btnListen: "🔊 Ascultă",
-      secSchedule: "PROGRAMUL ZILEI", btnEditSchedule: "✏️ Modifică",
-      secTasks: "INTENȚII & FAPTE ZILNICE", tasksCount: (d, t) => `${d} din ${t} Îndeplinite`, addTask: "+ Adaugă intenție",
-      sliderBanner: (cur, tot, dt) => `📜 Răsfoiește anul: Ziua ${cur} / ${tot} (${dt})`,
-      sliderStart: "1 ian", sliderEnd: "31 dec",
-      btnJan1: "⏮ 1 Ianuarie", btnToday: "⭐ Azi", btnDec31: "31 Decembrie ⏭",
-      settingsTitle: "Program & Notificări", settingsSub: "Setează orele pentru rugăciune și activități",
-      btnCancel: "Închide", btnSave: "Salvează",
-      onboardTitle: "Alegerea Limbilor", onboardSub: "Selectează limbile pe care dorești să le folosești:",
-      lblDefaultLang: "Limba principală (implicită):", btnSaveOnboard: "Confirmă & Deschide Jurnalul ➔",
-      scheduleDefault: [
-        { t: "07:00", a: "Rugăciune de dimineață" }, { t: "09:00", a: "Muncă cu bucurie" }, { t: "12:00", a: "Pauză de prânz" },
-        { t: "15:00", a: "O faptă bună" }, { t: "18:00", a: "Timp în familie" }, { t: "21:00", a: "Recunoștință" }
-      ],
-      tasksDefault: ["15 minute de rugăciune în liniște", "Citirea unui capitol din Evanghelie", "O vorbă caldă pentru un apropiat", "Mulțumire pentru binecuvântările zilei"]
-    },
-    el: {
-      alertOn: "Ειδοποιήσεις: Ναι", alertOff: "Ειδοποιήσεις: Όχι",
-      coverAnnualBadge: "✦ ΕΤΗΣΙΟ ΗΜΕΡΟΛΟΓΙΟ ✦", coverBrandSub: "ΠΙΣΤΗ & ΧΑΡΗ",
-      coverBookTitle: (y) => `Ετήσιο Ημερολόγιο ${y}`, coverPagesSub: (d) => `${d} Σελίδες • 1 Ιανουαρίου – 31 Δεκεμβρίου`,
-      photoPlaceholder: "Η Φωτογραφία σας Εδώ", btnChangePhoto: "📷 Αλλαγή φωτογραφίας", belongsTo: "Ανήκει σε:",
-      openBookBtn: (dt) => `📖 ΑΝΟΙΓΜΑ ΗΜΕΡΟΛΟΓΙΟΥ (${dt})`, coverFooterSub: "Ξεφυλλίστε τις σελίδες από 1η Ιανουαρίου έως το τέλος του έτους",
-      backToCover: "📖 ΕΞΩΦΥΛΛΟ", headerFaith: "ΠΙΣΤΗ & ΧΑΡΗ", scriptDay: "Ημέρα",
-      dayProgress: (cur, tot) => `Ημέρα ${cur} από ${tot}`,
-      searchTitle: "✦ ΑΝΑΖΗΤΗΣΗ ΓΡΑΦΗΣ (GEMINI AI)", searchSubtitle: "Έμπνευση & Θέματα",
-      searchPlaceholder: "Αναζήτηση θέματος (π.χ. ειρήνη, ελπίδα)...", searchBtn: "Αναζήτηση",
-      secScriptures: "ΑΓΙΑ ΓΡΑΦΗ • 3 ΕΔΑΦΙΑ ΤΗΝ ΗΜΕΡΑ",
-      tagMorning: "🌅 Πρωινό Φως", tagMidday: "☀️ Μεσημεριανή Δύναμη", tagEvening: "🌙 Βραδινή Ειρήνη",
-      btnIlluminate: "✦ Φώτιση", btnListen: "🔊 Ακρόαση",
-      secSchedule: "ΩΡΟΛΟΓΙΟ ΠΡΟΓΡΑΜΜΑ", btnEditSchedule: "✏️ Επεξεργασία",
-      secTasks: "ΚΑΘΗΜΕΡΙΝΕΣ ΠΡΟΘΕΣΕΙΣ", tasksCount: (d, t) => `${d} από ${t} Ολοκληρωμένες`, addTask: "+ Προσθήκη πρόθεσης",
-      sliderBanner: (cur, tot, dt) => `📜 Περιήγηση έτους: Ημέρα ${cur} / ${tot} (${dt})`,
-      sliderStart: "1 Ιαν", sliderEnd: "31 Δεκ",
-      btnJan1: "⏮ 1η Ιανουαρίου", btnToday: "⭐ Σήμερα", btnDec31: "31 Δεκεμβρίου ⏭",
-      settingsTitle: "Πρόγραμμα & Ειδοποιήσεις", settingsSub: "Ρυθμίστε τις ώρες προσευχής και καθηκόντων",
-      btnCancel: "Κλείσιμο", btnSave: "Αποθήκευση",
-      onboardTitle: "Επιλογή Γλωσσών", onboardSub: "Επιλέξτε τις γλώσσες που επιθυμείτε να χρησιμοποιείτε:",
-      lblDefaultLang: "Κύρια γλώσσα (προεπιλογή):", btnSaveOnboard: "Επιβεβαίωση & Άνοιγμα ➔",
-      scheduleDefault: [
-        { t: "07:00", a: "Πρωινή προσευχή" }, { t: "09:00", a: "Εργασία με χαρά" }, { t: "12:00", a: "Μεσημεριανή ανάπαυση" },
-        { t: "15:00", a: "Καλή πράξη" }, { t: "18:00", a: "Οικογενειακή γαλήνη" }, { t: "21:00", a: "Ευγνωμοσύνη" }
-      ],
-      tasksDefault: ["15 λεπτά σιωπηλής προσευχής", "Ανάγνωση κεφαλαίου από το Ευαγγέλιο", "Ένας καλός λόγος σε κάποιον", "Ευχαριστία για τις ευλογίες της ημέρας"]
     }
   };
 
@@ -1596,11 +1622,10 @@
     document.getElementById('lblDayProgress').textContent = t.dayProgress(currentDayOfYear, total);
     document.getElementById('lblSliderBanner').textContent = t.sliderBanner(currentDayOfYear, total, `${dateObj.getDate()} ${monthStr}`);
 
-    // Scriptures
-    const dayData = SCRIPTURE_COLLECTION[currentDayOfYear] || SCRIPTURE_COLLECTION[1];
-    const morning = dayData.morning[currentLang] || dayData.morning.en;
-    const midday = dayData.midday[currentLang] || dayData.midday.en;
-    const evening = dayData.evening[currentLang] || dayData.evening.en;
+    /* Зареждане на динамичните стихове за този конкретен ден */
+    const morning = getDailyScripture(currentDayOfYear, 'morning', currentLang);
+    const midday = getDailyScripture(currentDayOfYear, 'midday', currentLang);
+    const evening = getDailyScripture(currentDayOfYear, 'evening', currentLang);
 
     document.getElementById('morningRef').textContent = morning.ref;
     document.getElementById('morningText').textContent = morning.text;
@@ -1643,7 +1668,10 @@
 
   function promptChangeOwner() {
     const current = document.getElementById('ownerNameDisplay').textContent;
-    const newName = prompt("Вашето име / Your Name / Votre Nom:", current);
+    const promptMsg = currentLang === 'de' ? "Namen eingeben:" : 
+                      currentLang === 'it' ? "Inserisci il tuo nome:" : 
+                      currentLang === 'en' ? "Enter your name:" : "Въведете вашето име:";
+    const newName = prompt(promptMsg, current);
     if (newName && newName.trim()) {
       document.getElementById('ownerNameDisplay').textContent = newName.trim();
       localStorage.setItem('planner_owner_name', newName.trim());
@@ -1739,7 +1767,7 @@
     renderTasksForDay();
   }
 
-  // Language Setup & Onboarding
+  // Onboarding
   function openLanguageManager() {
     const active = getActiveLanguages();
     const grid = document.getElementById('onboardCheckboxGrid');
@@ -1751,7 +1779,6 @@
       const info = ALL_LANGUAGES[code];
       const isChecked = active.includes(code);
 
-      // Checkbox
       const label = document.createElement('label');
       label.className = 'lang-checkbox-item';
       label.innerHTML = `
@@ -1769,8 +1796,6 @@
     const defaultSelect = document.getElementById('onboardDefaultSelect');
     defaultSelect.innerHTML = '';
     const checked = Array.from(document.querySelectorAll('#onboardCheckboxGrid input[type="checkbox"]:checked')).map(cb => cb.value);
-    
-    // Ensure at least one language
     const list = checked.length ? checked : ['bg'];
     list.forEach(code => {
       const info = ALL_LANGUAGES[code];
@@ -1829,16 +1854,13 @@
     alert('✦ Gemini Spiritual Advisor');
   }
 
-  // Initialization
   document.addEventListener('DOMContentLoaded', () => {
-    // 1. Service Worker Registration
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js', { scope: './' })
-        .then((reg) => console.log('Service Worker регистриран успешно!', reg))
-        .catch((err) => console.warn('Грешка при Service Worker:', err));
+        .then((reg) => console.log('Service Worker OK', reg))
+        .catch((err) => console.warn('Service Worker Err', err));
     }
 
-    // 2. Load Saved Preferences
     const savedName = localStorage.getItem('planner_owner_name');
     if (savedName) document.getElementById('ownerNameDisplay').textContent = savedName;
 
@@ -1849,13 +1871,11 @@
       document.getElementById('lblCoverPhotoPlaceholder').style.display = 'none';
     }
 
-    // 3. Persistent Language Loading
     const savedLang = localStorage.getItem('faith_planner_lang');
     if (savedLang && ALL_LANGUAGES[savedLang]) {
       currentLang = savedLang;
     }
 
-    // 4. Check First-Time Launch (Onboarding)
     const isOnboarded = localStorage.getItem('faith_planner_onboarded');
     renderTopLanguageDropdown();
     document.getElementById('daySlider').max = getTotalDays(currentYear);
