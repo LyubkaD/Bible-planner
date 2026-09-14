@@ -1,14 +1,16 @@
 {
-  "id": "/BiblePlanner",
-  "name": "Daily Faith & Planner - Дневен Планер",
+  "id": "/faith-planner/",
+  "name": "Daily Faith & Planner — Planners by Lyubka",
   "short_name": "FaithPlanner",
-  "description": "Интерактивен луксозен кожен планер с библейски стихове, график и лични намерения за всеки ден от годината.",
+  "description": "Bible planner with devotions and daily tasks ",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#F8CFBB",
   "theme_color": "#F8CFBB",
+  "lang": "bg",
+  "dir": "ltr",
   "categories": ["lifestyle", "productivity"],
   "icons": [
     {
@@ -21,13 +23,16 @@
       "src": "icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any"
-    },
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
     {
       "src": "icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "maskable"
+      "form_factor": "narrow",
+      "label": "Daily Faith Planner Screen"
     }
   ]
 }
