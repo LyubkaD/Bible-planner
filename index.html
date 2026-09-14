@@ -14,20 +14,18 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600;700&family=Pinyon+Script&display=swap" rel="stylesheet">
 
   <style>
     :root {
       --bg-cream: #FAF6EE;
       --leather-peach: #F8CFBB;
-      --leather-deep: #E8A88E;
       --leather-border: #DCA085;
       --text-brown: #4A3427;
       --text-muted: #846857;
       --gold-accent: #D4AF37;
-      --gold-bright: #F5D77F;
-      --gold-dark: #996515;
       --terracotta: #B95835;
+      --terracotta-dark: #973F20;
       --paper-cream: #FFFDF9;
       --paper-line: rgba(220, 160, 133, 0.25);
       --font-title: 'Cinzel Decorative', serif;
@@ -39,7 +37,7 @@
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 
     body {
-      background: #F2EBE1;
+      background: #F4ECE3;
       font-family: var(--font-body);
       color: var(--text-brown);
       display: flex;
@@ -113,7 +111,6 @@
       display: flex;
       align-items: center;
       gap: 5px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.04);
     }
 
     .top-action-group {
@@ -126,7 +123,7 @@
       background: var(--paper-cream);
       border: 1px solid var(--leather-border);
       border-radius: 16px;
-      padding: 5px 8px;
+      padding: 5px 9px;
       font-family: var(--font-sans);
       font-size: 10px;
       font-weight: 600;
@@ -135,7 +132,6 @@
       align-items: center;
       gap: 4px;
       color: var(--text-brown);
-      transition: all 0.2s;
     }
     .notif-toggle-pill.muted { opacity: 0.6; }
 
@@ -151,9 +147,7 @@
       font-size: 14px;
       cursor: pointer;
       box-shadow: 0 2px 4px rgba(0,0,0,0.06);
-      transition: transform 0.2s;
     }
-    .top-icon-btn:active { transform: scale(0.92); }
 
     /* Notebook Outer Frame */
     .notebook-cover-frame {
@@ -165,122 +159,198 @@
       position: relative;
     }
 
-    /* Pages Container */
-    .parchment-sheet {
-      background: var(--bg-cream);
-      background-image: 
-        radial-gradient(ellipse at center, rgba(255,255,255,0.75) 0%, rgba(250,246,238,0.95) 100%),
-        repeating-linear-gradient(transparent, transparent 27px, var(--paper-line) 28px);
-      border-radius: 18px;
-      border: 1px solid #E5D5C5;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-      padding: 16px 14px 18px 14px;
-      position: relative;
-      min-height: 580px;
-    }
-
     /* Cover View */
     .cover-view {
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      padding: 30px 10px 20px 10px;
+      padding: 20px 8px 16px 8px;
     }
 
-    .cover-year-badge {
+    .cover-top-row {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      padding: 0 6px;
+    }
+
+    .cover-year-pill {
+      background: rgba(255,255,255,0.7);
+      border: 1px solid var(--leather-border);
+      border-radius: 16px;
+      padding: 4px 10px;
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-
-    .year-nav-btn {
-      background: rgba(255,255,255,0.8);
-      border: 1px solid var(--leather-border);
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      font-size: 16px;
-      cursor: pointer;
+      gap: 8px;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 700;
       color: var(--text-brown);
     }
 
-    .year-title {
-      font-family: var(--font-title);
-      font-size: 28px;
-      font-weight: 700;
+    .cover-year-btn {
+      background: none;
+      border: none;
+      font-size: 14px;
+      cursor: pointer;
       color: var(--terracotta);
-      letter-spacing: 2px;
     }
 
-    .cover-photo-frame {
-      width: 180px;
-      height: 220px;
+    .cover-annual-badge {
+      background: rgba(255,255,255,0.7);
+      border: 1px solid var(--leather-border);
       border-radius: 16px;
-      border: 3px solid var(--gold-accent);
-      background: #FFFDF8;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+      padding: 4px 10px;
+      font-family: var(--font-sans);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--terracotta);
+    }
+
+    .cover-brand-header {
+      font-family: var(--font-sans);
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-weight: 700;
+      margin-top: 4px;
+      margin-bottom: 2px;
+    }
+
+    .cover-script-title {
+      font-family: var(--font-script);
+      font-size: 42px;
+      color: var(--terracotta);
+      line-height: 1;
+      margin-bottom: 2px;
+    }
+
+    .cover-book-title {
+      font-family: var(--font-title);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-brown);
+      margin-bottom: 2px;
+    }
+
+    .cover-pages-sub {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-style: italic;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .cover-photo-card {
+      width: 190px;
+      height: 210px;
+      border-radius: 22px;
+      border: 3px solid #FFF;
+      background: #FFFBF4;
+      box-shadow: 0 8px 20px rgba(74, 52, 39, 0.15);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
       position: relative;
-      cursor: pointer;
-      margin: 15px 0 20px 0;
+      overflow: hidden;
+      margin-bottom: 12px;
     }
 
-    .cover-photo-frame img {
+    .cover-photo-card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
 
-    .cover-photo-placeholder {
-      padding: 20px;
+    .cover-photo-empty-txt {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 600;
       color: var(--text-muted);
-      font-family: var(--font-sans);
-      font-size: 11px;
       text-align: center;
+      padding: 10px;
     }
 
-    .cover-main-title {
-      font-family: var(--font-script);
-      font-size: 38px;
+    .cover-photo-change-btn {
+      position: absolute;
+      bottom: 8px;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid var(--leather-border);
+      border-radius: 14px;
+      padding: 4px 10px;
+      font-family: var(--font-sans);
+      font-size: 9px;
+      font-weight: 700;
       color: var(--text-brown);
-      line-height: 1.1;
-      margin-bottom: 4px;
-    }
-
-    .cover-sub-title {
-      font-family: var(--font-sans);
-      font-size: 11px;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: var(--terracotta);
-      font-weight: 600;
-      margin-bottom: 24px;
-    }
-
-    .btn-open-notebook {
-      background: linear-gradient(135deg, var(--terracotta), #9E4525);
-      color: #FFF;
-      border: 1px solid var(--gold-accent);
-      padding: 12px 28px;
-      border-radius: 25px;
-      font-family: var(--font-sans);
-      font-size: 13px;
-      font-weight: 600;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(185, 88, 53, 0.3);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .cover-owner-row {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--text-brown);
+      margin-bottom: 16px;
       display: flex;
       align-items: center;
+      gap: 4px;
+    }
+
+    .cover-owner-name {
+      font-weight: 600;
+      color: var(--terracotta);
+      border-bottom: 1px dashed var(--terracotta);
+      cursor: pointer;
+    }
+
+    .btn-open-book-large {
+      width: 100%;
+      background: linear-gradient(135deg, #B95835 0%, #8E3E20 100%);
+      color: #FFF;
+      border: 1px solid var(--gold-accent);
+      padding: 14px 18px;
+      border-radius: 18px;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(185, 88, 53, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       gap: 8px;
     }
 
-    /* Daily Page View */
+    .cover-open-subtext {
+      font-family: var(--font-sans);
+      font-size: 9px;
+      color: var(--text-muted);
+      margin-top: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    /* Page View */
+    .parchment-sheet {
+      background: var(--bg-cream);
+      background-image: 
+        radial-gradient(ellipse at center, rgba(255,255,255,0.8) 0%, rgba(250,246,238,0.95) 100%),
+        repeating-linear-gradient(transparent, transparent 27px, var(--paper-line) 28px);
+      border-radius: 18px;
+      border: 1px solid #E5D5C5;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+      padding: 14px 12px 16px 12px;
+      position: relative;
+      min-height: 580px;
+    }
+
     .page-view {
       display: none;
     }
@@ -291,7 +361,7 @@
       justify-content: space-between;
       border-bottom: 1px solid var(--leather-border);
       padding-bottom: 10px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
     .header-left {
@@ -302,13 +372,10 @@
     .brand-sub {
       font-family: var(--font-sans);
       font-size: 9px;
-      letter-spacing: 1.8px;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
       color: var(--text-muted);
       font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 5px;
     }
 
     .page-date-row {
@@ -356,7 +423,7 @@
     .page-step-btn {
       background: none;
       border: none;
-      font-size: 15px;
+      font-size: 16px;
       color: var(--terracotta);
       cursor: pointer;
       padding: 0 4px;
@@ -366,7 +433,7 @@
       font-family: var(--font-sans);
       font-size: 9px;
       background: #EFE6D8;
-      padding: 2px 7px;
+      padding: 2px 8px;
       border-radius: 10px;
       color: var(--text-muted);
       font-weight: 600;
@@ -383,10 +450,10 @@
       background: #FFF;
       border: 1px solid var(--leather-border);
       border-radius: 14px;
-      padding: 3px 8px;
+      padding: 4px 10px;
       font-family: var(--font-sans);
       font-size: 9px;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--text-brown);
       cursor: pointer;
     }
@@ -403,24 +470,23 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: transform 0.2s;
     }
-    .gemini-advisor-brooch:active { transform: scale(0.94); }
     .brooch-star { font-size: 16px; color: #7A5230; line-height: 1; }
     .brooch-txt { font-family: var(--font-sans); font-size: 7px; font-weight: 700; color: #6E4522; letter-spacing: 0.5px; }
 
-    /* Gemini Suite Bar */
-    .gemini-suite-box {
-      background: rgba(255, 255, 255, 0.7);
+    /* Single Search Bar (Gemini Scripture Search) */
+    .gemini-search-box {
+      background: rgba(255, 255, 255, 0.85);
       border: 1px solid var(--leather-border);
       border-radius: 14px;
       padding: 8px 10px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
     }
 
-    .suite-header-label {
+    .search-box-header {
       font-family: var(--font-sans);
-      font-size: 10px;
+      font-size: 9px;
       font-weight: 700;
       color: var(--terracotta);
       text-transform: uppercase;
@@ -431,28 +497,37 @@
       justify-content: space-between;
     }
 
-    .suite-btns-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
+    .search-input-group {
+      display: flex;
       gap: 6px;
     }
 
-    .suite-item-btn {
-      background: #FFFDF9;
-      border: 1px solid rgba(220, 160, 133, 0.4);
+    .search-text-input {
+      flex: 1;
+      background: #FFF;
+      border: 1px solid var(--leather-border);
       border-radius: 10px;
-      padding: 6px 4px;
-      text-align: center;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2px;
+      padding: 6px 10px;
+      font-family: var(--font-sans);
+      font-size: 11px;
+      color: var(--text-brown);
+      outline: none;
     }
 
-    .suite-item-icon { font-size: 16px; }
-    .suite-item-title { font-family: var(--font-sans); font-size: 10px; font-weight: 600; color: var(--text-brown); }
-    .suite-item-sub { font-family: var(--font-sans); font-size: 8px; color: var(--text-muted); }
+    .search-submit-btn {
+      background: var(--terracotta);
+      color: #FFF;
+      border: none;
+      border-radius: 10px;
+      padding: 6px 12px;
+      font-family: var(--font-sans);
+      font-size: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
 
     /* Scriptures Section */
     .section-title-label {
@@ -520,7 +595,7 @@
     .scripture-actions {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 12px;
       border-top: 1px dashed rgba(220, 160, 133, 0.3);
       padding-top: 6px;
     }
@@ -535,10 +610,10 @@
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 3px;
+      gap: 4px;
     }
 
-    /* Tasks / Intentions Section */
+    /* Tasks / Intentions */
     .tasks-section {
       margin-top: 14px;
     }
@@ -560,7 +635,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 12px;
+      font-size: 11px;
       color: var(--terracotta);
       flex-shrink: 0;
     }
@@ -599,12 +674,12 @@
       margin-top: 4px;
     }
 
-    /* Slider bottom navigation */
+    /* Day Slider */
     .day-slider-bar {
       display: flex;
       align-items: center;
       gap: 8px;
-      margin-top: 16px;
+      margin-top: 14px;
       padding-top: 10px;
       border-top: 1px solid var(--leather-border);
     }
@@ -616,7 +691,7 @@
       cursor: pointer;
     }
 
-    /* Settings Modal */
+    /* Modal Backdrop */
     .planner-modal-backdrop {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -735,16 +810,16 @@
 <body>
 
 <div class="device-stage">
-  <!-- Top Global Controls -->
+  <!-- Top Bar: Languages, Clock, Master Alert, Settings -->
   <div class="top-controls-bar">
     <div class="lang-select-wrap">
       <select id="langSelect" class="lang-select" onchange="switchAppLanguage(this.value)">
         <option value="bg">🇧🇬 Български</option>
+        <option value="it">🇮🇹 Italiano</option>
         <option value="en">🇬🇧 English</option>
         <option value="es">🇪🇸 Español</option>
         <option value="de">🇩🇪 Deutsch</option>
         <option value="fr">🇫🇷 Français</option>
-        <option value="it">🇮🇹 Italiano</option>
         <option value="ru">🇷🇺 Русский</option>
       </select>
     </div>
@@ -760,45 +835,60 @@
         <span id="alertLabel">Известия: Вкл</span>
       </button>
 
-      <button class="top-icon-btn" onclick="openScheduleSettings()" title="График и настройки">
+      <button class="top-icon-btn" onclick="openScheduleSettings()" title="Настройки">
         ⚙️
       </button>
     </div>
   </div>
 
-  <!-- Notebook Cover & Pages Frame -->
+  <!-- Notebook Binder Frame -->
   <div class="notebook-cover-frame">
-    <!-- View 1: Physical Book Cover -->
+    <!-- View 1: Physical Notebook Cover -->
     <div class="parchment-sheet cover-view" id="coverView">
-      <div class="cover-year-badge">
-        <button class="year-nav-btn" onclick="changeNotebookYear(-1)">‹</button>
-        <div class="year-title" id="coverYearDisplay">2026</div>
-        <button class="year-nav-btn" onclick="changeNotebookYear(1)">›</button>
+      <div class="cover-top-row">
+        <div class="cover-year-pill">
+          <button class="cover-year-btn" onclick="changeNotebookYear(-1)">‹</button>
+          <span id="coverYearDisplay">2026</span>
+          <button class="cover-year-btn" onclick="changeNotebookYear(1)">›</button>
+        </div>
+        <div class="cover-annual-badge" id="lblCoverAnnualBadge">✦ ГОДИШЕН ТЕФТЕР ✦</div>
       </div>
 
-      <div class="cover-photo-frame" onclick="document.getElementById('coverPhotoInput').click()">
+      <div class="cover-brand-header">
+        <span>PLANNERS BY LYUBKA</span> • <span id="lblCoverBrandSub">ВЯРА & БЛАГОДАТ</span>
+      </div>
+
+      <div class="cover-script-title">Daily Faith</div>
+      <div class="cover-book-title" id="lblCoverBookTitle">Годишен Тефтер 2026</div>
+      <div class="cover-pages-sub" id="lblCoverPagesSub">365 Страници • 1 Януари – 31 Декември</div>
+
+      <div class="cover-photo-card" onclick="document.getElementById('coverPhotoInput').click()">
         <img id="coverPhotoImg" src="" style="display:none;" alt="Cover">
-        <div class="cover-photo-placeholder" id="coverPhotoPlaceholder">
-          <div style="font-size: 28px; margin-bottom: 6px;">📷</div>
-          <div id="lblAddCoverPhoto">Поставете вашата снимка тук</div>
+        <div class="cover-photo-empty-txt" id="lblCoverPhotoPlaceholder">
+          <div style="font-size: 26px; margin-bottom: 4px;">📷</div>
+          <span id="lblPhotoNotice">Твоята Снимка Тук</span>
         </div>
+        <button class="cover-photo-change-btn" id="lblBtnChangePhoto">📷 Смени снимка</button>
       </div>
       <input type="file" id="coverPhotoInput" accept="image/*" style="display:none" onchange="handleCoverPhotoUpload(event)">
 
-      <div class="cover-main-title">Daily Faith & Planner</div>
-      <div class="cover-sub-title">Planners by Lyubka</div>
+      <div class="cover-owner-row">
+        <span id="lblBelongsTo">Принадлежи на:</span>
+        <span class="cover-owner-name" id="ownerNameDisplay" onclick="promptChangeOwner()">Любка</span> ✏️
+      </div>
 
-      <button class="btn-open-notebook" onclick="openNotebookPages()">
-        <span id="lblOpenPlanner">Разгърни Тефтера</span> ➔
+      <button class="btn-open-book-large" onclick="openNotebookPages()">
+        <span id="lblOpenBookBtn">📖 РАЗГЪРНИ ТЕФТЕРА (1 ЯНУАРИ)</span>
       </button>
+      <div class="cover-open-subtext" id="lblCoverFooterSub">Разгърни страниците от 1-ви януари до края на годината</div>
     </div>
 
-    <!-- View 2: Daily Parchment Page -->
+    <!-- View 2: Daily Page Inside Notebook -->
     <div class="parchment-sheet page-view" id="pageView">
       <div class="page-header">
         <div class="header-left">
           <div class="brand-sub">
-            <span>Planners by Lyubka</span> • <span id="lblHeaderFaith">Вяра & Благодат</span> • <span id="headerYearSpan">2026</span>
+            <span>PLANNERS BY LYUBKA</span> • <span id="lblHeaderFaith">ВЯРА & БЛАГОДАТ</span> • <span id="headerYearSpan">2026</span>
           </div>
           <div class="page-date-row">
             <span class="day-script-prefix" id="lblScriptDay">Ден</span>
@@ -809,58 +899,47 @@
             <button class="page-step-btn" onclick="navigateDay(-1)">‹</button>
             <span class="day-name-badge" id="lblWeekdayName">Понеделник</span>
             <button class="page-step-btn" onclick="navigateDay(1)">›</button>
-            <span class="day-progress-pill" id="lblDayOfYearProgress">Ден 1 от 365</span>
+            <span class="day-progress-pill" id="lblDayProgress">Ден 1 от 365</span>
           </div>
         </div>
 
         <div class="header-right">
-          <button class="cover-back-btn" onclick="closeNotebookToCover()" id="btnBackToCover">📖 Корица</button>
-          <div class="gemini-advisor-brooch" onclick="openGeminiAdvisor()" title="Gemini Духовен Съветник">
+          <button class="cover-back-btn" onclick="closeNotebookToCover()" id="btnBackToCover">📖 КОРИЦА</button>
+          <div class="gemini-advisor-brooch" onclick="openGeminiAdvisor()" title="Gemini Advisor">
             <span class="brooch-star">✦</span>
             <span class="brooch-txt">GEMINI</span>
           </div>
         </div>
       </div>
 
-      <!-- Gemini AI Suite Bar -->
-      <div class="gemini-suite-box">
-        <div class="suite-header-label">
-          <span id="lblGeminiSuite">✦ Джемини Духовни Инструменти</span>
-          <span style="font-size:8px; opacity:0.8;">AI Благодат</span>
+      <!-- Dedicated Gemini Scripture Search Bar -->
+      <div class="gemini-search-box">
+        <div class="search-box-header">
+          <span id="lblSearchTitle">✦ БИБЛЕЙСКИ ТЪРСАЧ (GEMINI AI)</span>
+          <span style="font-size:8px; opacity:0.8;">Вдъхновение & Теми</span>
         </div>
-        <div class="suite-btns-row">
-          <div class="suite-item-btn" onclick="alert('🎨 Акварелно изкуство')">
-            <span class="suite-item-icon">🎨</span>
-            <span class="suite-item-title" id="lblToolArt">Свято Изкуство</span>
-            <span class="suite-item-sub" id="lblToolArtSub">Акварел на деня</span>
-          </div>
-          <div class="suite-item-btn" onclick="alert('🔍 Библейски търсач')">
-            <span class="suite-item-icon">🔍</span>
-            <span class="suite-item-title" id="lblToolSearch">Библейски Търсач</span>
-            <span class="suite-item-sub" id="lblToolSearchSub">Цитати с Google</span>
-          </div>
-          <div class="suite-item-btn" onclick="alert('📷 Освети снимка')">
-            <span class="suite-item-icon">📷</span>
-            <span class="suite-item-title" id="lblToolPhoto">Освети Снимка</span>
-            <span class="suite-item-sub" id="lblToolPhotoSub">Благодарствен миг</span>
-          </div>
+        <div class="search-input-group">
+          <input type="text" id="scriptureSearchInput" class="search-text-input" placeholder="Търси тема (напр. мир, надежда, сила)...">
+          <button class="search-submit-btn" onclick="handleScriptureSearch()">
+            <span>🔍</span> <span id="lblSearchBtn">Търси</span>
+          </button>
         </div>
       </div>
 
       <!-- Scripture Cards -->
-      <div class="section-title-label" id="lblSectionScriptures">Библейски Стихове • 3 за Деня</div>
+      <div class="section-title-label" id="lblSectionScriptures">СВЕЩЕНО ПИСАНИЕ • 3 СТИХА ЗА ДЕНЯ</div>
       
       <!-- Morning -->
       <div class="scripture-card">
         <div class="scripture-top-bar">
           <span class="scripture-type-tag" id="lblTagMorning">🌅 Утринна Светлина</span>
-          <span class="scripture-ref" id="morningRef">Псалм 118:24</span>
+          <span class="scripture-ref" id="morningRef">Псалм 142:8</span>
           <span class="scripture-alert-time">🔔 07:30</span>
         </div>
-        <div class="scripture-text" id="morningText">„Този е денят, който Господ е сътворил; нека се радваме и се веселим в него!“</div>
+        <div class="scripture-text" id="morningText">„Дай ми да чуя рано Твоята милост, защото на Тебе се уповавам; покажи ми пътя, по който да ходя, понеже към Тебе възнасям душата си.“</div>
         <div class="scripture-actions">
-          <button class="sc-btn" onclick="alert('Озаряване...')"><span class="btn-illuminate-txt">✦ Озари</span></button>
-          <button class="sc-btn" onclick="alert('Слушане...')"><span class="btn-listen-txt">🔊 Слушай</span></button>
+          <button class="sc-btn" onclick="openGeminiAdvisor()"><span class="btn-illuminate-txt">✦ Озари с Джемини</span></button>
+          <button class="sc-btn" onclick="readScriptureAudio('morningText')"><span class="btn-listen-txt">🔊 Слушай</span></button>
         </div>
       </div>
 
@@ -868,13 +947,13 @@
       <div class="scripture-card">
         <div class="scripture-top-bar">
           <span class="scripture-type-tag" id="lblTagMidday">☀️ Обедна Сила</span>
-          <span class="scripture-ref" id="middayRef">Римляни 8:28</span>
+          <span class="scripture-ref" id="middayRef">Исая 40:29</span>
           <span class="scripture-alert-time">🔔 12:30</span>
         </div>
-        <div class="scripture-text" id="middayText">„И знаем, че всичко съдейства за добро на онези, които любят Бога.“</div>
+        <div class="scripture-text" id="middayText">„Той дава сила на уморения и умножава мощта на изнемощелия. Ония, които се надяват на Господа, ще подновят силата си.“</div>
         <div class="scripture-actions">
-          <button class="sc-btn" onclick="alert('Озаряване...')"><span class="btn-illuminate-txt">✦ Озари</span></button>
-          <button class="sc-btn" onclick="alert('Слушане...')"><span class="btn-listen-txt">🔊 Слушай</span></button>
+          <button class="sc-btn" onclick="openGeminiAdvisor()"><span class="btn-illuminate-txt">✦ Озари с Джемини</span></button>
+          <button class="sc-btn" onclick="readScriptureAudio('middayText')"><span class="btn-listen-txt">🔊 Слушай</span></button>
         </div>
       </div>
 
@@ -882,26 +961,26 @@
       <div class="scripture-card">
         <div class="scripture-top-bar">
           <span class="scripture-type-tag" id="lblTagEvening">🌙 Вечерен Мир</span>
-          <span class="scripture-ref" id="eveningRef">Псалм 121:7-8</span>
+          <span class="scripture-ref" id="eveningRef">Псалм 4:8</span>
           <span class="scripture-alert-time">🔔 20:30</span>
         </div>
-        <div class="scripture-text" id="eveningText">„Господ ще те пази от всяко зло; Той ще пази душата ти.“</div>
+        <div class="scripture-text" id="eveningText">„В мир ще легна и ще заспя, защото само Ти, Господи, ме правиш да живея в безопасност.“</div>
         <div class="scripture-actions">
-          <button class="sc-btn" onclick="alert('Озаряване...')"><span class="btn-illuminate-txt">✦ Озари</span></button>
-          <button class="sc-btn" onclick="alert('Слушане...')"><span class="btn-listen-txt">🔊 Слушай</span></button>
+          <button class="sc-btn" onclick="openGeminiAdvisor()"><span class="btn-illuminate-txt">✦ Озари с Джемини</span></button>
+          <button class="sc-btn" onclick="readScriptureAudio('eveningText')"><span class="btn-listen-txt">🔊 Слушай</span></button>
         </div>
       </div>
 
-      <!-- Tasks / Intentions -->
+      <!-- Tasks / Daily Intentions -->
       <div class="tasks-section">
-        <div class="section-title-label" id="lblSectionTasks">Дневни Намерения & Дела</div>
+        <div class="section-title-label" id="lblSectionTasks">ДНЕВНИ НАМЕРЕНИЯ & ДЕЛА</div>
         <div id="tasksListContainer"></div>
         <button class="btn-add-task" onclick="addNewTaskInput()" id="btnAddDailyTask">+ Добави намерение</button>
       </div>
 
-      <!-- Bottom Day Slider -->
+      <!-- Slider Day Navigation -->
       <div class="day-slider-bar">
-        <span style="font-size:11px;">1 янв</span>
+        <span style="font-size:11px;" id="lblSliderStart">1 янв</span>
         <input type="range" min="1" max="365" value="1" class="slider-input" id="daySlider" oninput="onSliderChange(this.value)">
         <span style="font-size:11px;" id="lblSliderEnd">31 дек</span>
       </div>
@@ -914,7 +993,7 @@
   <div class="settings-modal-card">
     <div class="settings-badge">Planners by Lyubka</div>
     <div class="settings-title" id="lblSettingsTitle">Часови график & Известия</div>
-    <div class="settings-sub" id="lblSettingsSub">Настрой часовете за ежедневния си ритъм</div>
+    <div class="settings-sub" id="lblSettingsSub">Настрой точните часове за ежедневието си</div>
 
     <div id="scheduleRowsContainer">
       <div class="schedule-item-row">
@@ -956,237 +1035,289 @@
   let currentLang = 'bg';
   let alertsEnabled = true;
 
-  // Multi-Language Scripture Translations (Versions for BG, EN, ES, DE, FR, IT, RU)
-  const SCRIPTURE_DATABASE = {
-    morning: {
-      bg: { ref: "Псалм 118:24", text: "„Този е денят, който Господ е сътворил; нека се радваме и се веселим в него!“" },
-      en: { ref: "Psalm 118:24", text: "“This is the day that the Lord has made; let us rejoice and be glad in it.”" },
-      es: { ref: "Salmos 118:24", text: "“Este es el día que hizo el Señor; nos gozaremos y alegraremos en él.”" },
-      de: { ref: "Psalm 118:24", text: "„Dies ist der Tag, den der Herr gemacht hat; lasst uns freuen und fröhlich an ihm sein.“" },
-      fr: { ref: "Psaume 118:24", text: "« C'est ici la journée que l'Éternel a faite: Qu'elle soit pour nous un sujet de joie ! »" },
-      it: { ref: "Salmo 118:24", text: "«Questo è il giorno che l'Eterno ha fatto; festeggiamo e rallegriamoci in esso!»" },
-      ru: { ref: "Псалом 117:24", text: "«Сей день сотворил Господь: возрадуемся и возвеселимся в оный!»" }
-    },
-    midday: {
-      bg: { ref: "Римляни 8:28", text: "„И знаем, че всичко съдейства за добро на онези, които любят Бога.“" },
-      en: { ref: "Romans 8:28", text: "“And we know that in all things God works for the good of those who love Him.”" },
-      es: { ref: "Romanos 8:28", text: "“Y sabemos que a los que aman a Dios, todas las cosas les ayudan a bien.”" },
-      de: { ref: "Römer 8:28", text: "„Wir wissen aber, dass denen, die Gott lieben, alle Dinge zum Besten dienen.“" },
-      fr: { ref: "Romains 8:28", text: "« Nous savons que toutes choses concourent au bien de ceux qui aiment Dieu. »" },
-      it: { ref: "Romani 8:28", text: "«Tutte le cose cooperano al bene per coloro che amano Dio.»" },
-      ru: { ref: "Римлянам 8:28", text: "«Любящим Бога, призванным по Его изволению, все содействует ко благу.»" }
-    },
-    evening: {
-      bg: { ref: "Псалм 121:7-8", text: "„Господ ще те пази от всяко зло; Той ще пази душата ти.“" },
-      en: { ref: "Psalm 121:7-8", text: "“The Lord will keep you from all harm—He will watch over your life.”" },
-      es: { ref: "Salmos 121:7-8", text: "“El Señor te guardará de todo mal; Él guardará tu alma.”" },
-      de: { ref: "Psalm 121:7-8", text: "„Der Herr behüte dich vor allem Übel, er behüte deine Seele.“" },
-      fr: { ref: "Psaume 121:7-8", text: "« L'Éternel te gardera de tout mal, Il gardera ton âme. »" },
-      it: { ref: "Salmo 121:7-8", text: "«L'Eterno ti proteggerà da ogni male; Egli proteggerà l'anima tua.»" },
-      ru: { ref: "Псалом 120:7-8", text: "«Господь сохранит тебя от всякого зла; сохранит душу твою Господь.»" }
+  // Complete International Bible Translations for Day 1
+  const SCRIPTURE_COLLECTION = {
+    1: {
+      morning: {
+        bg: { ref: "Псалм 142:8", text: "„Дай ми да чуя рано Твоята милост, защото на Тебе се уповавам; покажи ми пътя, по който да ходя, понеже към Тебе възнасям душата си.“" },
+        it: { ref: "Salmo 143:8", text: "«Fammi udire la tua benignità la mattina, poiché in te confido; fammi conoscere la via per la quale devo camminare, poiché io elevo l'anima mia a te.»" },
+        en: { ref: "Psalm 143:8", text: "“Cause me to hear Your lovingkindness in the morning, for in You do I trust; cause me to know the way wherein I should walk; for I lift up my soul unto You.”" },
+        es: { ref: "Salmos 143:8", text: "“Hazme oír por la mañana tu misericordia, porque en ti he confiado; hazme saber el camino por donde ande, porque a ti he elevado mi alma.”" },
+        de: { ref: "Psalm 143:8", text: "„Lass mich frühe hören deine Gnade; denn ich hoffe auf dich. Tue mir kund den Weg, darauf ich gehen soll; denn mich verlangt nach dir.“" },
+        fr: { ref: "Psaume 143:8", text: "« Fais-moi dès le matin entendre ta bonté ! Car je me confie en toi. Fais-moi connaître le chemin où je dois marcher ! Car j'élève à toi mon âme. »" },
+        ru: { ref: "Псалом 142:8", text: "«Даруй мне рано услышать милость Твою, ибо я на Тебя уповаю. Укажи мне путь, по которому мне идти, ибо к Тебе возношу я душу мою.»" }
+      },
+      midday: {
+        bg: { ref: "Исая 40:29", text: "„Той дава сила на уморения и умножава мощта на изнемощелия. Ония, които се надяват на Господа, ще подновят силата си.“" },
+        it: { ref: "Isaia 40:29", text: "«Egli dà forza allo stanco e accresce vigore a colui che è spossato. Quelli che sperano nell'Eterno acquistano nuove forze.»" },
+        en: { ref: "Isaiah 40:29", text: "“He gives power to the faint; and to them that have no might He increases strength. Those who wait upon the Lord shall renew their strength.”" },
+        es: { ref: "Isaías 40:29", text: "“Él da esfuerzo al cansado, y multiplica las fuerzas al que no tiene ningunas. Los que esperan en el Señor tendrán nuevas fuerzas.”" },
+        de: { ref: "Jesaja 40:29", text: "„Er gibt dem Müden Kraft und Stärke genug dem Unvermögenden. Die auf den Herrn harren, kriegen neue Kraft.“" },
+        fr: { ref: "Ésaïe 40:29", text: "« Il donne de la force à celui qui est fatigué, et Il augmente la vigueur de celui qui tombe en défaillance. »" },
+        ru: { ref: "Исаия 40:29", text: "«Он дает утомленному силу, и изнемогшему дарует крепость. А надеющиеся на Господа обновятся в силе.»" }
+      },
+      evening: {
+        bg: { ref: "Псалм 4:8", text: "„В мир ще легна и ще заспя, защото само Ти, Господи, ме правиш да живея в безопасност.“" },
+        it: { ref: "Salmo 4:8", text: "«In pace mi coricherò e in pace dormirò, perché tu solo, o Eterno, mi fai abitare al sicuro.»" },
+        en: { ref: "Psalm 4:8", text: "“In peace I will lie down and sleep, for You alone, Lord, make me dwell in safety.”" },
+        es: { ref: "Salmos 4:8", text: "“En paz me acostaré, y asimismo dormiré; porque solo tú, Señor, me haces vivir confiado.”" },
+        de: { ref: "Psalm 4:8", text: "„Ich liege und schlafe ganz mit Frieden; denn allein du, Herr, hilfst mir, dass ich sicher wohne.“" },
+        fr: { ref: "Psaume 4:8", text: "« Je me couche et je m'endors en paix, car Toi seul, ô Éternel ! tu me fais habiter en sécurité. »" },
+        ru: { ref: "Псалом 4:8", text: "«Спокойно ложусь я и сплю, ибо Ты, Господи, един даешь мне жить в безопасности.»" }
+      }
     }
   };
 
+  // Comprehensive UI Dictionaries
   const TRANSLATIONS = {
     bg: {
       alertOn: "Известия: Вкл",
       alertOff: "Известия: Изкл",
-      addPhoto: "Поставете вашата снимка тук",
-      openBook: "Разгърни Тефтера",
-      backCover: "📖 Корица",
-      faithGrace: "Вяра & Благодат",
-      dayPrefix: "Ден",
-      geminiSuite: "✦ Джемини Духовни Инструменти",
-      toolArt: "Свято Изкуство",
-      toolArtSub: "Акварел на деня",
-      toolSearch: "Библейски Търсач",
-      toolSearchSub: "Цитати с Google",
-      toolPhoto: "Освети Снимка",
-      toolPhotoSub: "Благодарствен миг",
-      secScriptures: "Библейски Стихове • 3 за Деня",
+      coverAnnualBadge: "✦ ГОДИШЕН ТЕФТЕР ✦",
+      coverBrandSub: "ВЯРА & БЛАГОДАТ",
+      coverBookTitle: (year) => `Годишен Тефтер ${year}`,
+      coverPagesSub: (days) => `${days} Страници • 1 Януари – 31 Декември`,
+      photoPlaceholder: "Твоята Снимка Тук",
+      btnChangePhoto: "📷 Смени снимка",
+      belongsTo: "Принадлежи на:",
+      openBookBtn: (date) => `📖 РАЗГЪРНИ ТЕФТЕРА (${date})`,
+      coverFooterSub: "Разгърни страниците от 1-ви януари до края на годината",
+      backToCover: "📖 КОРИЦА",
+      headerFaith: "ВЯРА & БЛАГОДАТ",
+      scriptDay: "Ден",
+      dayProgress: (day, total) => `Ден ${day} от ${total}`,
+      searchTitle: "✦ БИБЛЕЙСКИ ТЪРСАЧ (GEMINI AI)",
+      searchPlaceholder: "Търси тема (напр. мир, надежда, сила)...",
+      searchBtn: "Търси",
+      secScriptures: "СВЕЩЕНО ПИСАНИЕ • 3 СТИХА ЗА ДЕНЯ",
       tagMorning: "🌅 Утринна Светлина",
       tagMidday: "☀️ Обедна Сила",
       tagEvening: "🌙 Вечерен Мир",
-      btnIlluminate: "✦ Озари",
+      btnIlluminate: "✦ Озари с Джемини",
       btnListen: "🔊 Слушай",
-      secTasks: "Дневни Намерения & Дела",
+      secTasks: "ДНЕВНИ НАМЕРЕНИЯ & ДЕЛА",
       addTask: "+ Добави намерение",
+      sliderStart: "1 янв",
+      sliderEnd: "31 дек",
       settingsTitle: "Часови график & Известия",
-      settingsSub: "Настрой часовете за ежедневния си ритъм",
+      settingsSub: "Настрой точните часове за ежедневието си",
       btnCancel: "Затвори",
-      btnSave: "Запази настройките"
+      btnSave: "Запази настройките",
+      defaultTasks: ["Утринна молитва & благодарност", "Четене на Свещеното Писание"]
+    },
+    it: {
+      alertOn: "Avvisi: Attivi",
+      alertOff: "Avvisi: Disattivati",
+      coverAnnualBadge: "✦ TACCUINO ANNUALE ✦",
+      coverBrandSub: "FEDE & GRAZIA",
+      coverBookTitle: (year) => `Taccuino Annuale ${year}`,
+      coverPagesSub: (days) => `${days} Pagine • 1 Gennaio – 31 Dicembre`,
+      photoPlaceholder: "La Tua Foto Qui",
+      btnChangePhoto: "📷 Cambia foto",
+      belongsTo: "Appartiene a:",
+      openBookBtn: (date) => `📖 APRI TACCUINO (${date})`,
+      coverFooterSub: "Sfoglia le pagine dal 1° gennaio alla fine dell'anno",
+      backToCover: "📖 COPERTINA",
+      headerFaith: "FEDE & GRAZIA",
+      scriptDay: "Giorno",
+      dayProgress: (day, total) => `Giorno ${day} di ${total}`,
+      searchTitle: "✦ CERCA NELLE SCRITTURE (GEMINI AI)",
+      searchPlaceholder: "Cerca tema o versetto (es. pace, forza, speranza)...",
+      searchBtn: "Cerca",
+      secScriptures: "SACRA SCRITTURA • 3 VERSETTI DEL GIORNO",
+      tagMorning: "🌅 Luce del Mattino",
+      tagMidday: "☀️ Forza Meridiana",
+      tagEvening: "🌙 Pace della Sera",
+      btnIlluminate: "✦ Illumina con Gemini",
+      btnListen: "🔊 Ascolta",
+      secTasks: "INTENZIONI & DOVERI GIORNALIERI",
+      addTask: "+ Aggiungi intenzione",
+      sliderStart: "1 gen",
+      sliderEnd: "31 dic",
+      settingsTitle: "Orari e Notifiche",
+      settingsSub: "Imposta il tuo ritmo quotidiano e gli avvisi",
+      btnCancel: "Chiudi",
+      btnSave: "Salva impostazioni",
+      defaultTasks: ["Preghiera mattutina & gratitudine", "Lettura delle Sacre Scritture"]
     },
     en: {
       alertOn: "Alerts: On",
       alertOff: "Alerts: Off",
-      addPhoto: "Place your photo here",
-      openBook: "Open Planner",
-      backCover: "📖 Cover",
-      faithGrace: "Faith & Grace",
-      dayPrefix: "Day",
-      geminiSuite: "✦ Gemini Spiritual Suite",
-      toolArt: "Holy Art",
-      toolArtSub: "Daily Watercolor",
-      toolSearch: "Scripture Search",
-      toolSearchSub: "Quotes with Google",
-      toolPhoto: "Photo Blessing",
-      toolPhotoSub: "Grateful Moment",
-      secScriptures: "Daily Scripture • 3 Verses",
+      coverAnnualBadge: "✦ ANNUAL PLANNER ✦",
+      coverBrandSub: "FAITH & GRACE",
+      coverBookTitle: (year) => `Annual Planner ${year}`,
+      coverPagesSub: (days) => `${days} Pages • January 1 – December 31`,
+      photoPlaceholder: "Your Photo Here",
+      btnChangePhoto: "📷 Change photo",
+      belongsTo: "Belongs to:",
+      openBookBtn: (date) => `📖 OPEN PLANNER (${date})`,
+      coverFooterSub: "Turn pages from January 1st to the end of the year",
+      backToCover: "📖 COVER",
+      headerFaith: "FAITH & GRACE",
+      scriptDay: "Day",
+      dayProgress: (day, total) => `Day ${day} of ${total}`,
+      searchTitle: "✦ SCRIPTURE SEARCH (GEMINI AI)",
+      searchPlaceholder: "Search topic or verse (e.g. peace, strength, hope)...",
+      searchBtn: "Search",
+      secScriptures: "HOLY SCRIPTURE • 3 DAILY VERSES",
       tagMorning: "🌅 Morning Light",
       tagMidday: "☀️ Midday Strength",
       tagEvening: "🌙 Evening Peace",
-      btnIlluminate: "✦ Illuminate",
+      btnIlluminate: "✦ Illuminate with Gemini",
       btnListen: "🔊 Listen",
-      secTasks: "Daily Intentions & Duties",
+      secTasks: "DAILY INTENTIONS & DUTIES",
       addTask: "+ Add daily intention",
+      sliderStart: "Jan 1",
+      sliderEnd: "Dec 31",
       settingsTitle: "Daily Schedule & Alerts",
-      settingsSub: "Customize your daily rhythm and alerts",
+      settingsSub: "Customize your rhythm and daily scripture alerts",
       btnCancel: "Close",
-      btnSave: "Save Settings"
+      btnSave: "Save Settings",
+      defaultTasks: ["Morning prayer & thanksgiving", "Scripture devotional reading"]
     },
     es: {
       alertOn: "Alertas: Sí",
       alertOff: "Alertas: No",
-      addPhoto: "Coloca tu foto aquí",
-      openBook: "Abrir Cuaderno",
-      backCover: "📖 Portada",
-      faithGrace: "Fe y Gracia",
-      dayPrefix: "Día",
-      geminiSuite: "✦ Herramientas de Gemini",
-      toolArt: "Arte Sacro",
-      toolArtSub: "Acuarela del día",
-      toolSearch: "Buscador Bíblico",
-      toolSearchSub: "Citas con Google",
-      toolPhoto: "Bendecir Foto",
-      toolPhotoSub: "Momento de gracia",
-      secScriptures: "Escrituras Diarias • 3 Versículos",
-      tagMorning: "🌅 Luz de Mañana",
-      tagMidday: "☀️ Fuerza de Mediodía",
+      coverAnnualBadge: "✦ PLANIFICADOR ANUAL ✦",
+      coverBrandSub: "FE & GRACIA",
+      coverBookTitle: (year) => `Planificador Anual ${year}`,
+      coverPagesSub: (days) => `${days} Páginas • 1 Enero – 31 Diciembre`,
+      photoPlaceholder: "Tu Foto Aquí",
+      btnChangePhoto: "📷 Cambiar foto",
+      belongsTo: "Pertenece a:",
+      openBookBtn: (date) => `📖 ABRIR CUADERNO (${date})`,
+      coverFooterSub: "Pasa las páginas desde el 1 de enero hasta el final del año",
+      backToCover: "📖 PORTADA",
+      headerFaith: "FE & GRACIA",
+      scriptDay: "Día",
+      dayProgress: (day, total) => `Día ${day} de ${total}`,
+      searchTitle: "✦ BUSCADOR BÍBLICO (GEMINI AI)",
+      searchPlaceholder: "Buscar tema (ej. paz, fuerza, esperanza)...",
+      searchBtn: "Buscar",
+      secScriptures: "SANTAS ESCRITURAS • 3 VERSÍCULOS AL DÍA",
+      tagMorning: "🌅 Luz de la Mañana",
+      tagMidday: "☀️ Fuerza del Mediodía",
       tagEvening: "🌙 Paz de la Tarde",
-      btnIlluminate: "✦ Iluminar",
+      btnIlluminate: "✦ Iluminar con Gemini",
       btnListen: "🔊 Escuchar",
-      secTasks: "Intenciones y Deberes",
-      addTask: "+ Agregar intención",
+      secTasks: "INTENCIONES & DEBERES DIARIOS",
+      addTask: "+ Añadir intención",
+      sliderStart: "1 ene",
+      sliderEnd: "31 dic",
       settingsTitle: "Horario y Notificaciones",
-      settingsSub: "Configura el ritmo de tus oraciones",
+      settingsSub: "Configura tus horas y recordatorios espirituales",
       btnCancel: "Cerrar",
-      btnSave: "Guardar"
+      btnSave: "Guardar",
+      defaultTasks: ["Oración matutina y gratitud", "Lectura de la Santa Palabra"]
     },
     de: {
-      alertOn: "Benachrichtigungen: Ein",
-      alertOff: "Benachrichtigungen: Aus",
-      addPhoto: "Foto hier einfügen",
-      openBook: "Planer Öffnen",
-      backCover: "📖 Umschlag",
-      faithGrace: "Glaube & Gnade",
-      dayPrefix: "Tag",
-      geminiSuite: "✦ Geistige Werkzeuge",
-      toolArt: "Heilige Kunst",
-      toolArtSub: "Aquarell des Tages",
-      toolSearch: "Bibel-Suche",
-      toolSearchSub: "Zitate mit Google",
-      toolPhoto: "Foto Segnen",
-      toolPhotoSub: "Dankbarer Moment",
-      secScriptures: "Tägliche Verse • 3 Schriftstellen",
+      alertOn: "Alarme: Ein",
+      alertOff: "Alarme: Aus",
+      coverAnnualBadge: "✦ JAHRESPLANER ✦",
+      coverBrandSub: "GLAUBE & GNADE",
+      coverBookTitle: (year) => `Jahresplaner ${year}`,
+      coverPagesSub: (days) => `${days} Seiten • 1. Januar – 31. Dezember`,
+      photoPlaceholder: "Dein Foto Hier",
+      btnChangePhoto: "📷 Foto ändern",
+      belongsTo: "Gehört zu:",
+      openBookBtn: (date) => `📖 PLANER ÖFFNEN (${date})`,
+      coverFooterSub: "Blättern Sie die Seiten vom 1. Januar bis zum Jahresende",
+      backToCover: "📖 UMSCHLAG",
+      headerFaith: "GLAUBE & GNADE",
+      scriptDay: "Tag",
+      dayProgress: (day, total) => `Tag ${day} von ${total}`,
+      searchTitle: "✦ BIBEL-SUCHE (GEMINI AI)",
+      searchPlaceholder: "Thema suchen (z.B. Frieden, Kraft, Hoffnung)...",
+      searchBtn: "Suchen",
+      secScriptures: "HEILIGE SCHRIFT • 3 TÄGLICHE VERSE",
       tagMorning: "🌅 Morgenlicht",
       tagMidday: "☀️ Mittagsstärke",
       tagEvening: "🌙 Abendfrieden",
-      btnIlluminate: "✦ Erleuchten",
+      btnIlluminate: "✦ Mit Gemini erleuchten",
       btnListen: "🔊 Anhören",
-      secTasks: "Tagesaufgaben & Vorsätze",
-      addTask: "+ Aufgabe hinzufügen",
-      settingsTitle: "Tagesplan & Wecker",
-      settingsSub: "Stellen Sie Ihre täglichen Gebetszeiten ein",
+      secTasks: "TAGESAUFGABEN & VORSÄTZE",
+      addTask: "+ Vorsatz hinzufügen",
+      sliderStart: "1. Jan",
+      sliderEnd: "31. Dez",
+      settingsTitle: "Tagesplan & Benachrichtigungen",
+      settingsSub: "Stellen Sie Ihre täglichen Zeiten und Verse ein",
       btnCancel: "Schließen",
-      btnSave: "Speichern"
+      btnSave: "Speichern",
+      defaultTasks: ["Morgengebet und Dankbarkeit", "Tägliche Schriftlesung"]
     },
     fr: {
-      alertOn: "Alertes : Activées",
-      alertOff: "Alertes : Désactivées",
-      addPhoto: "Ajoutez votre photo",
-      openBook: "Ouvrir l'agenda",
-      backCover: "📖 Couverture",
-      faithGrace: "Foi & Grâce",
-      dayPrefix: "Jour",
-      geminiSuite: "✦ Outils Spirituels Gemini",
-      toolArt: "Art Sacré",
-      toolArtSub: "Aquarelle du jour",
-      toolSearch: "Recherche Biblique",
-      toolSearchSub: "Citations Google",
-      toolPhoto: "Bénir la Photo",
-      toolPhotoSub: "Moment de grâce",
-      secScriptures: "Écritures du Jour • 3 Versets",
+      alertOn: "Alertes : Oui",
+      alertOff: "Alertes : Non",
+      coverAnnualBadge: "✦ AGENDA ANNUEL ✦",
+      coverBrandSub: "FOI & GRÂCE",
+      coverBookTitle: (year) => `Agenda Annuel ${year}`,
+      coverPagesSub: (days) => `${days} Pages • 1er Janvier – 31 Décembre`,
+      photoPlaceholder: "Votre Photo Ici",
+      btnChangePhoto: "📷 Changer la photo",
+      belongsTo: "Appartient à :",
+      openBookBtn: (date) => `📖 OUVRIR L'AGENDA (${date})`,
+      coverFooterSub: "Feuilletez les pages du 1er janvier jusqu'à la fin de l'année",
+      backToCover: "📖 COUVERTURE",
+      headerFaith: "FOI & GRÂCE",
+      scriptDay: "Jour",
+      dayProgress: (day, total) => `Jour ${day} sur ${total}`,
+      searchTitle: "✦ RECHERCHE BIBLIQUE (GEMINI AI)",
+      searchPlaceholder: "Chercher un thème (ex. paix, force, espoir)...",
+      searchBtn: "Chercher",
+      secScriptures: "SAINTES ÉCRITURES • 3 VERSETS DU JOUR",
       tagMorning: "🌅 Lumière du Matin",
       tagMidday: "☀️ Force de Midi",
       tagEvening: "🌙 Paix du Soir",
-      btnIlluminate: "✦ Illuminer",
+      btnIlluminate: "✦ Illuminer avec Gemini",
       btnListen: "🔊 Écouter",
-      secTasks: "Intentions & Devoirs",
+      secTasks: "INTENTIONS & DEVOIRS DU JOUR",
       addTask: "+ Ajouter une intention",
+      sliderStart: "1 janv",
+      sliderEnd: "31 déc",
       settingsTitle: "Horaire & Rappels",
       settingsSub: "Personnalisez votre rythme quotidien",
       btnCancel: "Fermer",
-      btnSave: "Enregistrer"
-    },
-    it: {
-      alertOn: "Notifiche: Attive",
-      alertOff: "Notifiche: Disattive",
-      addPhoto: "Inserisci la tua foto",
-      openBook: "Apri Diario",
-      backCover: "📖 Copertina",
-      faithGrace: "Fede & Grazia",
-      dayPrefix: "Giorno",
-      geminiSuite: "✦ Strumenti Spirituali",
-      toolArt: "Arte Sacra",
-      toolArtSub: "Acquerello del giorno",
-      toolSearch: "Cerca Versetto",
-      toolSearchSub: "Citazioni con Google",
-      toolPhoto: "Benedici Foto",
-      toolPhotoSub: "Attimo di grazia",
-      secScriptures: "Scritture Quotidiane • 3 Versetti",
-      tagMorning: "🌅 Luce del Mattino",
-      tagMidday: "☀️ Forza del Mezzogiorno",
-      tagEvening: "🌙 Pace della Sera",
-      btnIlluminate: "✦ Illumina",
-      btnListen: "🔊 Ascolta",
-      secTasks: "Intenzioni e Doveri",
-      addTask: "+ Aggiungi intenzione",
-      settingsTitle: "Orari e Notifiche",
-      settingsSub: "Imposta il tuo ritmo di preghiera",
-      btnCancel: "Chiudi",
-      btnSave: "Salva"
+      btnSave: "Enregistrer",
+      defaultTasks: ["Prière du matin et gratitude", "Lecture sainte quotidienne"]
     },
     ru: {
       alertOn: "Оповещения: Вкл",
       alertOff: "Оповещения: Выкл",
-      addPhoto: "Добавьте ваше фото",
-      openBook: "Открыть Планер",
-      backCover: "📖 Обложка",
-      faithGrace: "Вера и Благодать",
-      dayPrefix: "День",
-      geminiSuite: "✦ Духовные Инструменты",
-      toolArt: "Святое Искусство",
-      toolArtSub: "Акварель дня",
-      toolSearch: "Библейский Поиск",
-      toolSearchSub: "Цитаты через Google",
-      toolPhoto: "Освятить Фото",
-      toolPhotoSub: "Миг благодарности",
-      secScriptures: "Стихи на День • 3 Отрывка",
+      coverAnnualBadge: "✦ ГОДОВОЙ ПЛАНЕР ✦",
+      coverBrandSub: "ВЕРА & БЛАГОДАТЬ",
+      coverBookTitle: (year) => `Годовой Планер ${year}`,
+      coverPagesSub: (days) => `${days} Страниц • 1 Января – 31 Декабря`,
+      photoPlaceholder: "Ваше Фото Здесь",
+      btnChangePhoto: "📷 Сменить фото",
+      belongsTo: "Принадлежит:",
+      openBookBtn: (date) => `📖 ОТКРЫТЬ ПЛАНЕР (${date})`,
+      coverFooterSub: "Листайте страницы с 1 января до конца года",
+      backToCover: "📖 ОБЛОЖКА",
+      headerFaith: "ВЕРА & БЛАГОДАТЬ",
+      scriptDay: "День",
+      dayProgress: (day, total) => `День ${day} из ${total}`,
+      searchTitle: "✦ БИБЛЕЙСКИЙ ПОИСК (GEMINI AI)",
+      searchPlaceholder: "Поиск темы (напр. мир, сила, надежда)...",
+      searchBtn: "Найти",
+      secScriptures: "СВЯЩЕННОЕ ПИСАНИЕ • 3 СТИХА НА ДЕНЬ",
       tagMorning: "🌅 Утренний Свет",
       tagMidday: "☀️ Дневная Сила",
       tagEvening: "🌙 Вечерний Покой",
-      btnIlluminate: "✦ Озарить",
+      btnIlluminate: "✦ Озарить с Gemini",
       btnListen: "🔊 Слушать",
-      secTasks: "Намерения и Дела",
+      secTasks: "НАМЕРЕНИЯ & ДЕЛА НА ДЕНЬ",
       addTask: "+ Добавить намерение",
+      sliderStart: "1 янв",
+      sliderEnd: "31 дек",
       settingsTitle: "Расписание и Оповещения",
       settingsSub: "Настройте время молитвы и дел",
       btnCancel: "Закрыть",
-      btnSave: "Сохранить"
+      btnSave: "Сохранить",
+      defaultTasks: ["Утренняя молитва и благодарение", "Чтение Священного Писания"]
     }
   };
 
-  // Clock
+  // Live Digital Clock
   setInterval(() => {
     const now = new Date();
     document.getElementById('digitalClock').textContent = now.toTimeString().split(' ')[0];
@@ -1205,6 +1336,7 @@
     document.getElementById('coverYearDisplay').textContent = currentYear;
     document.getElementById('headerYearSpan').textContent = currentYear;
     document.getElementById('daySlider').max = getTotalDays(currentYear);
+    updateLanguageInterface();
     renderCurrentDay();
   }
 
@@ -1233,55 +1365,41 @@
     renderCurrentDay();
   }
 
-  function renderCurrentDay() {
+  function updateLanguageInterface() {
+    const t = TRANSLATIONS[currentLang] || TRANSLATIONS.bg;
     const total = getTotalDays(currentYear);
-    const dateObj = new Date(currentYear, 0, currentDayOfYear);
-    
-    // Localized Date
-    const localeMap = { bg: 'bg-BG', en: 'en-US', es: 'es-ES', de: 'de-DE', fr: 'fr-FR', it: 'it-IT', ru: 'ru-RU' };
-    const locale = localeMap[currentLang] || 'bg-BG';
 
-    const monthStr = dateObj.toLocaleDateString(locale, { month: 'long' });
-    const weekdayStr = dateObj.toLocaleDateString(locale, { weekday: 'long' });
-
-    document.getElementById('lblDayNum').textContent = dateObj.getDate();
-    document.getElementById('lblMonthName').textContent = monthStr.charAt(0).toUpperCase() + monthStr.slice(1);
-    document.getElementById('lblWeekdayName').textContent = weekdayStr.charAt(0).toUpperCase() + weekdayStr.slice(1);
-    document.getElementById('lblDayOfYearProgress').textContent = `${TRANSLATIONS[currentLang].dayPrefix} ${currentDayOfYear} / ${total}`;
-
-    // Update Scriptures according to chosen language
-    const langKey = SCRIPTURE_DATABASE.morning[currentLang] ? currentLang : 'en';
-    document.getElementById('morningRef').textContent = SCRIPTURE_DATABASE.morning[langKey].ref;
-    document.getElementById('morningText').textContent = SCRIPTURE_DATABASE.morning[langKey].text;
-
-    document.getElementById('middayRef').textContent = SCRIPTURE_DATABASE.midday[langKey].ref;
-    document.getElementById('middayText').textContent = SCRIPTURE_DATABASE.midday[langKey].text;
-
-    document.getElementById('eveningRef').textContent = SCRIPTURE_DATABASE.evening[langKey].ref;
-    document.getElementById('eveningText').textContent = SCRIPTURE_DATABASE.evening[langKey].text;
-
-    renderTasksForDay();
-  }
-
-  function switchAppLanguage(lang) {
-    currentLang = lang;
-    const t = TRANSLATIONS[lang] || TRANSLATIONS.en;
-
+    // Top Bar
     document.getElementById('alertLabel').textContent = alertsEnabled ? t.alertOn : t.alertOff;
-    document.getElementById('lblAddCoverPhoto').textContent = t.addPhoto;
-    document.getElementById('lblOpenPlanner').textContent = t.openBook;
-    document.getElementById('btnBackToCover').textContent = t.backCover;
-    document.getElementById('lblHeaderFaith').textContent = t.faithGrace;
-    document.getElementById('lblScriptDay').textContent = t.dayPrefix;
 
-    document.getElementById('lblGeminiSuite').textContent = t.geminiSuite;
-    document.getElementById('lblToolArt').textContent = t.toolArt;
-    document.getElementById('lblToolArtSub').textContent = t.toolArtSub;
-    document.getElementById('lblToolSearch').textContent = t.toolSearch;
-    document.getElementById('lblToolSearchSub').textContent = t.toolSearchSub;
-    document.getElementById('lblToolPhoto').textContent = t.toolPhoto;
-    document.getElementById('lblToolPhotoSub').textContent = t.toolPhotoSub;
+    // Cover Page
+    document.getElementById('lblCoverAnnualBadge').textContent = t.coverAnnualBadge;
+    document.getElementById('lblCoverBrandSub').textContent = t.coverBrandSub;
+    document.getElementById('lblCoverBookTitle').textContent = t.coverBookTitle(currentYear);
+    document.getElementById('lblCoverPagesSub').textContent = t.coverPagesSub(total);
+    document.getElementById('lblPhotoNotice').textContent = t.photoPlaceholder;
+    document.getElementById('lblBtnChangePhoto').textContent = t.btnChangePhoto;
+    document.getElementById('lblBelongsTo').textContent = t.belongsTo;
+    
+    const firstDateObj = new Date(currentYear, 0, 1);
+    const localeMap = { bg: 'bg-BG', it: 'it-IT', en: 'en-US', es: 'es-ES', de: 'de-DE', fr: 'fr-FR', ru: 'ru-RU' };
+    const locale = localeMap[currentLang] || 'bg-BG';
+    const firstDateStr = firstDateObj.toLocaleDateString(locale, { day: 'numeric', month: 'long' }).toUpperCase();
+    
+    document.getElementById('lblOpenBookBtn').textContent = t.openBookBtn(firstDateStr);
+    document.getElementById('lblCoverFooterSub').textContent = t.coverFooterSub;
 
+    // Inside Page Header
+    document.getElementById('btnBackToCover').textContent = t.backToCover;
+    document.getElementById('lblHeaderFaith').textContent = t.headerFaith;
+    document.getElementById('lblScriptDay').textContent = t.scriptDay;
+
+    // Search Bar
+    document.getElementById('lblSearchTitle').textContent = t.searchTitle;
+    document.getElementById('scriptureSearchInput').placeholder = t.searchPlaceholder;
+    document.getElementById('lblSearchBtn').textContent = t.searchBtn;
+
+    // Scripture Section & Tags
     document.getElementById('lblSectionScriptures').textContent = t.secScriptures;
     document.getElementById('lblTagMorning').textContent = t.tagMorning;
     document.getElementById('lblTagMidday').textContent = t.tagMidday;
@@ -1290,14 +1408,59 @@
     document.querySelectorAll('.btn-illuminate-txt').forEach(el => el.textContent = t.btnIlluminate);
     document.querySelectorAll('.btn-listen-txt').forEach(el => el.textContent = t.btnListen);
 
+    // Tasks Section
     document.getElementById('lblSectionTasks').textContent = t.secTasks;
     document.getElementById('btnAddDailyTask').textContent = t.addTask;
 
+    // Slider
+    document.getElementById('lblSliderStart').textContent = t.sliderStart;
+    document.getElementById('lblSliderEnd').textContent = t.sliderEnd;
+
+    // Settings Modal
     document.getElementById('lblSettingsTitle').textContent = t.settingsTitle;
     document.getElementById('lblSettingsSub').textContent = t.settingsSub;
     document.getElementById('btnCancelSettings').textContent = t.btnCancel;
     document.getElementById('btnSaveSettings').textContent = t.btnSave;
+  }
 
+  function renderCurrentDay() {
+    const total = getTotalDays(currentYear);
+    const dateObj = new Date(currentYear, 0, currentDayOfYear);
+    
+    const localeMap = { bg: 'bg-BG', it: 'it-IT', en: 'en-US', es: 'es-ES', de: 'de-DE', fr: 'fr-FR', ru: 'ru-RU' };
+    const locale = localeMap[currentLang] || 'bg-BG';
+
+    const monthStr = dateObj.toLocaleDateString(locale, { month: 'long' });
+    const weekdayStr = dateObj.toLocaleDateString(locale, { weekday: 'long' });
+
+    document.getElementById('lblDayNum').textContent = dateObj.getDate();
+    document.getElementById('lblMonthName').textContent = monthStr.charAt(0).toUpperCase() + monthStr.slice(1);
+    document.getElementById('lblWeekdayName').textContent = weekdayStr.charAt(0).toUpperCase() + weekdayStr.slice(1);
+    
+    const t = TRANSLATIONS[currentLang] || TRANSLATIONS.bg;
+    document.getElementById('lblDayProgress').textContent = t.dayProgress(currentDayOfYear, total);
+
+    // Load Scriptures in selected language
+    const dayData = SCRIPTURE_COLLECTION[currentDayOfYear] || SCRIPTURE_COLLECTION[1];
+    const morning = dayData.morning[currentLang] || dayData.morning.en;
+    const midday = dayData.midday[currentLang] || dayData.midday.en;
+    const evening = dayData.evening[currentLang] || dayData.evening.en;
+
+    document.getElementById('morningRef').textContent = morning.ref;
+    document.getElementById('morningText').textContent = morning.text;
+
+    document.getElementById('middayRef').textContent = midday.ref;
+    document.getElementById('middayText').textContent = midday.text;
+
+    document.getElementById('eveningRef').textContent = evening.ref;
+    document.getElementById('eveningText').textContent = evening.text;
+
+    renderTasksForDay();
+  }
+
+  function switchAppLanguage(lang) {
+    currentLang = lang;
+    updateLanguageInterface();
     renderCurrentDay();
   }
 
@@ -1310,6 +1473,17 @@
     btn.classList.toggle('muted', !alertsEnabled);
   }
 
+  function promptChangeOwner() {
+    const current = document.getElementById('ownerNameDisplay').textContent;
+    const promptMsg = currentLang === 'it' ? "Inserisci il tuo nome:" : 
+                      currentLang === 'en' ? "Enter your name:" : "Въведете вашето име:";
+    const newName = prompt(promptMsg, current);
+    if (newName && newName.trim()) {
+      document.getElementById('ownerNameDisplay').textContent = newName.trim();
+      localStorage.setItem('planner_owner_name', newName.trim());
+    }
+  }
+
   function handleCoverPhotoUpload(e) {
     const file = e.target.files[0];
     if (file) {
@@ -1317,13 +1491,35 @@
       reader.onload = function(evt) {
         document.getElementById('coverPhotoImg').src = evt.target.result;
         document.getElementById('coverPhotoImg').style.display = 'block';
-        document.getElementById('coverPhotoPlaceholder').style.display = 'none';
+        document.getElementById('lblCoverPhotoPlaceholder').style.display = 'none';
+        localStorage.setItem('planner_cover_photo', evt.target.result);
       };
       reader.readAsDataURL(file);
     }
   }
 
-  // Tasks local persistence per date
+  // Scripture Search Handler
+  function handleScriptureSearch() {
+    const q = document.getElementById('scriptureSearchInput').value.trim();
+    if (!q) return;
+    const notice = currentLang === 'it' ? `Ricerca di versetti sulla parola: "${q}"...` :
+                   currentLang === 'en' ? `Searching scriptures for: "${q}"...` :
+                   `Търсене на библейски стихове за: "${q}"...`;
+    alert(notice);
+  }
+
+  function readScriptureAudio(elementId) {
+    const text = document.getElementById(elementId).textContent;
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      const voiceLangs = { bg: 'bg-BG', it: 'it-IT', en: 'en-US', es: 'es-ES', de: 'de-DE', fr: 'fr-FR', ru: 'ru-RU' };
+      utterance.lang = voiceLangs[currentLang] || 'en-US';
+      window.speechSynthesis.speak(utterance);
+    }
+  }
+
+  // Tasks Management
   function getTaskStorageKey() {
     return `tasks_${currentYear}_${currentDayOfYear}`;
   }
@@ -1334,12 +1530,10 @@
     const container = document.getElementById('tasksListContainer');
     container.innerHTML = '';
 
-    const defaultTasks = saved.length ? saved : [
-      { text: currentLang === 'bg' ? "Утринна молитва & благодарност" : "Morning prayer & gratitude", done: false },
-      { text: currentLang === 'bg' ? "Четене на Свещеното Писание" : "Scripture reading", done: false }
-    ];
+    const t = TRANSLATIONS[currentLang] || TRANSLATIONS.bg;
+    const defaultList = saved.length ? saved : t.defaultTasks.map(txt => ({ text: txt, done: false }));
 
-    defaultTasks.forEach((task, idx) => {
+    defaultList.forEach((task, idx) => {
       const row = document.createElement('div');
       row.className = 'task-row';
       row.innerHTML = `
@@ -1352,12 +1546,10 @@
 
   function toggleTask(index) {
     const key = getTaskStorageKey();
+    const t = TRANSLATIONS[currentLang] || TRANSLATIONS.bg;
     let saved = JSON.parse(localStorage.getItem(key) || '[]');
     if (!saved.length) {
-      saved = [
-        { text: currentLang === 'bg' ? "Утринна молитва & благодарност" : "Morning prayer & gratitude", done: false },
-        { text: currentLang === 'bg' ? "Четене на Свещеното Писание" : "Scripture reading", done: false }
-      ];
+      saved = t.defaultTasks.map(txt => ({ text: txt, done: false }));
     }
     saved[index].done = !saved[index].done;
     localStorage.setItem(key, JSON.stringify(saved));
@@ -1392,16 +1584,32 @@
 
   function saveScheduleSettings() {
     closeScheduleSettings();
-    alert(currentLang === 'bg' ? 'Настройките са запазени!' : 'Settings saved successfully!');
+    const msg = currentLang === 'it' ? 'Impostazioni salvate con successo!' :
+                currentLang === 'en' ? 'Settings saved successfully!' : 'Настройките са запазени!';
+    alert(msg);
   }
 
   function openGeminiAdvisor() {
-    alert(currentLang === 'bg' ? '✦ Джемини Духовен Съветник е на Ваше разположение!' : '✦ Gemini Spiritual Advisor is ready to guide you!');
+    const msg = currentLang === 'it' ? '✦ Il Consigliere Spirituale Gemini è pronto a guidarti!' :
+                currentLang === 'en' ? '✦ Gemini Spiritual Advisor is ready to guide you!' :
+                '✦ Джемини Духовен Съветник е на Ваше разположение!';
+    alert(msg);
   }
 
-  // Initialize
+  // Init
   document.addEventListener('DOMContentLoaded', () => {
+    const savedName = localStorage.getItem('planner_owner_name');
+    if (savedName) document.getElementById('ownerNameDisplay').textContent = savedName;
+
+    const savedPhoto = localStorage.getItem('planner_cover_photo');
+    if (savedPhoto) {
+      document.getElementById('coverPhotoImg').src = savedPhoto;
+      document.getElementById('coverPhotoImg').style.display = 'block';
+      document.getElementById('lblCoverPhotoPlaceholder').style.display = 'none';
+    }
+
     document.getElementById('daySlider').max = getTotalDays(currentYear);
+    updateLanguageInterface();
     renderCurrentDay();
   });
 </script>
